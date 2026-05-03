@@ -1,0 +1,113 @@
+[gd_scene format=3 uid="uid://bo40l4l3miv8y"]
+
+[ext_resource type="PackedScene" uid="uid://bco0rv30rf8xj" path="res://Player/Player.tscn" id="1_ce3we"]
+[ext_resource type="PackedScene" uid="uid://qds8cb40y1s3" path="res://Level/Food scene/tmpbox.tscn" id="1_e2dvy"]
+[ext_resource type="Texture2D" uid="uid://r7my86f4toiv" path="res://icon.svg" id="1_hjgrw"]
+[ext_resource type="PackedScene" uid="uid://bt48esdiy3jmh" path="res://Level/refuel station.tscn" id="4_m6451"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m6451"]
+size = Vector2(341, 74)
+
+[node name="Map" type="Node2D" unique_id=896304998]
+
+[node name="shelvs" type="Node2D" parent="." unique_id=1948633486]
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="shelvs" unique_id=1811799852]
+collision_layer = 2
+collision_mask = 0
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="shelvs/StaticBody2D2" unique_id=1410192166]
+position = Vector2(279, 130.00005)
+scale = Vector2(2.7265623, 0.6640622)
+texture = ExtResource("1_hjgrw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="shelvs/StaticBody2D2" unique_id=184278181]
+position = Vector2(280.5, 129)
+shape = SubResource("RectangleShape2D_m6451")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="shelvs" unique_id=1519114033]
+position = Vector2(585, 5)
+collision_layer = 2
+collision_mask = 0
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="shelvs/StaticBody2D" unique_id=1434775398]
+position = Vector2(279, 130.00005)
+scale = Vector2(2.7265623, 0.6640622)
+texture = ExtResource("1_hjgrw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="shelvs/StaticBody2D" unique_id=1571934452]
+position = Vector2(280.5, 129)
+shape = SubResource("RectangleShape2D_m6451")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="shelvs" unique_id=1552091832]
+position = Vector2(0, 207)
+collision_layer = 2
+collision_mask = 0
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="shelvs/StaticBody2D3" unique_id=1553883290]
+position = Vector2(279, 130.00005)
+scale = Vector2(2.7265623, 0.6640622)
+texture = ExtResource("1_hjgrw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="shelvs/StaticBody2D3" unique_id=645499910]
+position = Vector2(280.5, 129)
+shape = SubResource("RectangleShape2D_m6451")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="shelvs" unique_id=1472133678]
+position = Vector2(585, 212)
+collision_layer = 2
+collision_mask = 0
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="shelvs/StaticBody2D4" unique_id=79026712]
+position = Vector2(279, 130.00005)
+scale = Vector2(2.7265623, 0.6640622)
+texture = ExtResource("1_hjgrw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="shelvs/StaticBody2D4" unique_id=1783291450]
+position = Vector2(280.5, 129)
+shape = SubResource("RectangleShape2D_m6451")
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="shelvs" unique_id=158916171]
+position = Vector2(0, 414)
+collision_layer = 2
+collision_mask = 0
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="shelvs/StaticBody2D5" unique_id=1116623286]
+position = Vector2(279, 130.00005)
+scale = Vector2(2.7265623, 0.6640622)
+texture = ExtResource("1_hjgrw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="shelvs/StaticBody2D5" unique_id=570749963]
+position = Vector2(280.5, 129)
+shape = SubResource("RectangleShape2D_m6451")
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="shelvs" unique_id=1949647129]
+position = Vector2(585, 419)
+collision_layer = 2
+collision_mask = 0
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="shelvs/StaticBody2D6" unique_id=279922754]
+position = Vector2(279, 130.00005)
+scale = Vector2(2.7265623, 0.6640622)
+texture = ExtResource("1_hjgrw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="shelvs/StaticBody2D6" unique_id=1114224820]
+position = Vector2(280.5, 129)
+shape = SubResource("RectangleShape2D_m6451")
+
+[node name="Tmpbox" parent="." unique_id=547495598 instance=ExtResource("1_e2dvy")]
+position = Vector2(361, 237)
+scale = Vector2(0.5, 0.5)
+
+[node name="Player" parent="." unique_id=1473017971 instance=ExtResource("1_ce3we")]
+position = Vector2(230, 236)
+scale = Vector2(0.5, 0.5)
+
+[node name="RefuelStation" parent="." unique_id=810362400 instance=ExtResource("4_m6451")]
+position = Vector2(1301, 442)

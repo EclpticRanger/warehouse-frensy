@@ -1,0 +1,66 @@
+extends CharacterBody2D
+
+var is_holding: bool = false
+
+var move_speed: int = 20000
+var fuel: float = 100
+var fuel_rate: float = 1.5
+
+var in_pickup_range: Array = []
+
+var holing
+
+func _ready() -> void:
+	pass
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _physics_process(delta: float) -> void:
+	
+	var forward_back = Input.get_axis("down", "up")
+	var left_right = Input.get_axis("left", "right")
+	
+	if forward_back != 0 or left_right != 0:
+		fuel -= delta * fuel_rate
+	rotation += left_right * delta * 4
+	velocity = Vector2.UP.rotated(rotation) * forward_back * move_speed * delta
+	
+	if Input.is_action_pressed("refuel") and len($"Refull Detection".get_overlapping_areas()) > 0:
+		fuel += fuel_rate * delta * 10
+		GolbalBus.emit_signal("fuel_start")
+	
+	if Input.is_action_just_pressed("pickup"):
+		if is_holding==false:
+			if len(in_pickup_range) < 1:
+				pass
+			elif len(in_pickup_range) > 1:
+				hold_box(in_pickup_range[randi_range(0, len(in_pickup_range)-1)])
+			else: hold_box(in_pickup_range[0])
+		elif is_holding==true:
+			release_box(holing)
+		
+	
+	
+	
+	move_and_slide()
+
+func hold_box(_box_node):
+	is_holding = true
+	holing= _box_node
+	_box_node.player = self
+	_box_node.being_held = true
+
+func release_box(_held_box):
+	is_holding = false
+	holing = null
+	_held_box.player = null
+	_held_box.being_held = false
+
+func _on_body_enter_pickup_area(body: Node2D) -> void:
+	if body.is_in_group("Pickapable"):
+		in_pickup_range.append(body)
+
+
+func _on_body_exit_pickup_area(body: Node2D) -> void:
+	if body in in_pickup_range:
+		in_pickup_range.erase(body)
