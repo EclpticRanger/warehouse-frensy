@@ -2,11 +2,22 @@
 
 [ext_resource type="Texture2D" uid="uid://r7my86f4toiv" path="res://icon.svg" id="1_3qydi"]
 [ext_resource type="Script" uid="uid://b1wywy5x3vn3i" path="res://Player/player.gd" id="1_q3lat"]
-[ext_resource type="SpriteFrames" uid="uid://yooustnivhow" path="res://Player/UI/Fuel.tres" id="3_ddoul"]
-[ext_resource type="Script" uid="uid://celb5tuahjf77" path="res://Player/UI/Fuel Tank.gd" id="4_8g4oa"]
+[ext_resource type="Texture2D" uid="uid://csa43mkhop4kn" path="res://Assets/Art/Player/UI/Fuel Tank.png" id="3_tok1r"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q3lat"]
 radius = 62.008064
+
+[sub_resource type="Gradient" id="Gradient_ddoul"]
+colors = PackedColorArray(0, 0, 0, 1, 0.19913352, 0.19913352, 0.19913346, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8g4oa"]
+gradient = SubResource("Gradient_ddoul")
+
+[sub_resource type="Gradient" id="Gradient_6ysni"]
+colors = PackedColorArray(0.50357634, 0.037460934, 0.4932866, 1, 0.6001523, 0.0018507236, 0.7989992, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vlldt"]
+gradient = SubResource("Gradient_6ysni")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q3lat"]
 size = Vector2(4, 26)
@@ -38,14 +49,33 @@ shape = SubResource("CircleShape2D_q3lat")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=433791877]
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="CanvasLayer" unique_id=235592323]
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer" unique_id=1678362948]
 texture_filter = 1
 position = Vector2(52.000008, 559.00006)
 scale = Vector2(5, 5)
-sprite_frames = ExtResource("3_ddoul")
-animation = &"Full"
-frame_progress = 0.08289028
-script = ExtResource("4_8g4oa")
+texture = ExtResource("3_tok1r")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer" unique_id=1124038517]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -534.0
+offset_top = 199.0
+offset_right = -514.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+min_value = 1.0
+step = 0.01
+value = 100.0
+fill_mode = 3
+nine_patch_stretch = true
+texture_under = SubResource("GradientTexture1D_8g4oa")
+texture_progress = SubResource("GradientTexture1D_vlldt")
 
 [node name="Pickup range" type="Area2D" parent="." unique_id=1672938088]
 

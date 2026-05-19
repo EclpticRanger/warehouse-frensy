@@ -13,6 +13,8 @@ var holing
 func _ready() -> void:
 	pass
 
+func _process(_delta: float) -> void:
+	$CanvasLayer/TextureProgressBar.value = fuel
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
@@ -27,7 +29,13 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_pressed("refuel") and len($"Refull Detection".get_overlapping_areas()) > 0:
 		fuel += fuel_rate * delta * 10
-		GolbalBus.emit_signal("fuel_start")
+		if fuel > 100:
+			fuel = 100
+		if Input.is_action_just_pressed("refuel"):
+			GlobalBus.emit_signal("fuel_start")
+	elif Input.is_action_just_released("refuel"):
+		GlobalBus.emit_signal("fuel_end")
+	
 	
 	if Input.is_action_just_pressed("pickup"):
 		if is_holding==false:
