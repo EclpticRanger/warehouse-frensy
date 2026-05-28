@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://qds8cb40y1s3" path="res://Level/Food scene/tmpbox.tscn" id="1_e2dvy"]
 [ext_resource type="Texture2D" uid="uid://r7my86f4toiv" path="res://icon.svg" id="1_hjgrw"]
 [ext_resource type="PackedScene" uid="uid://bt48esdiy3jmh" path="res://Level/refuel station.tscn" id="4_m6451"]
+[ext_resource type="Script" uid="uid://c083atuk15bm8" path="res://Level/box_spawner.gd" id="5_iv6in"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m6451"]
 size = Vector2(341, 74)
@@ -111,3 +112,11 @@ scale = Vector2(0.5, 0.5)
 
 [node name="RefuelStation" parent="." unique_id=810362400 instance=ExtResource("4_m6451")]
 position = Vector2(1301, 442)
+
+[node name="Box Spawner" type="Node2D" parent="." unique_id=1282600935]
+script = ExtResource("5_iv6in")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Box Spawner" unique_id=2012226665]
+visible = false
+texture = ExtResource("1_hjgrw")

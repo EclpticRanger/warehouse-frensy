@@ -6,19 +6,32 @@ var move_speed: int = 20000
 var fuel: float = 100
 var fuel_rate: float = 1.5
 
+#Key: 1 = in game ui
+#     2 = shop ui
+#     3 = orders ui
+var ui_in: int = 1
+
 var in_pickup_range: Array = []
 
 var holing
+
+@onready var UI_Control_Node = $UI/UI
+
 
 func _ready() -> void:
 	pass
 
 func _process(_delta: float) -> void:
-	$CanvasLayer/TextureProgressBar.value = fuel
+	Signal_Bus.emit_signal("change_fuel", [fuel])
+	handel_ui()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	
+	handel_movement(delta)
+	handel_refuel(delta)
+	handel_pickup()
+
+func handel_movement(delta):
 	var forward_back = Input.get_axis("down", "up")
 	var left_right = Input.get_axis("left", "right")
 	
@@ -26,17 +39,26 @@ func _physics_process(delta: float) -> void:
 		fuel -= delta * fuel_rate
 	rotation += left_right * delta * 4
 	velocity = Vector2.UP.rotated(rotation) * forward_back * move_speed * delta
-	
+	move_and_slide()
+
+func handel_ui():
+	if Input.is_action_just_pressed("order menu"):
+		UI_Control_Node.try_open_or_close_ui(3)
+	if Input.is_action_just_pressed("shop menu"):
+		UI_Control_Node.try_open_or_close_ui(2)
+
+
+func handel_refuel(delta):
 	if Input.is_action_pressed("refuel") and len($"Refull Detection".get_overlapping_areas()) > 0:
 		fuel += fuel_rate * delta * 10
 		if fuel > 100:
 			fuel = 100
 		if Input.is_action_just_pressed("refuel"):
-			GlobalBus.emit_signal("fuel_start")
+			Signal_Bus.emit_signal("fuel_start")
 	elif Input.is_action_just_released("refuel"):
-		GlobalBus.emit_signal("fuel_end")
-	
-	
+		Signal_Bus.emit_signal("fuel_end")
+
+func handel_pickup():
 	if Input.is_action_just_pressed("pickup"):
 		if is_holding==false:
 			if len(in_pickup_range) < 1:
@@ -46,11 +68,6 @@ func _physics_process(delta: float) -> void:
 			else: hold_box(in_pickup_range[0])
 		elif is_holding==true:
 			release_box(holing)
-		
-	
-	
-	
-	move_and_slide()
 
 func hold_box(_box_node):
 	is_holding = true

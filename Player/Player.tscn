@@ -2,7 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://r7my86f4toiv" path="res://icon.svg" id="1_3qydi"]
 [ext_resource type="Script" uid="uid://b1wywy5x3vn3i" path="res://Player/player.gd" id="1_q3lat"]
+[ext_resource type="Script" uid="uid://c8o6w6riujg8f" path="res://Player/UI/UI.gd" id="3_ddoul"]
 [ext_resource type="Texture2D" uid="uid://csa43mkhop4kn" path="res://Assets/Art/Player/UI/Fuel Tank.png" id="3_tok1r"]
+[ext_resource type="Theme" uid="uid://b8lg4cd08m63h" path="res://Theme.tres" id="5_8g4oa"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q3lat"]
 radius = 62.008064
@@ -47,24 +49,43 @@ shape = SubResource("CircleShape2D_q3lat")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=593087178]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=433791877]
+[node name="UI" type="CanvasLayer" parent="." unique_id=433791877]
 
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer" unique_id=1678362948]
+[node name="UI" type="Control" parent="UI" unique_id=917805291 node_paths=PackedStringArray("fuel_tank_nodepath", "shop_menu_nodepath", "shop_menu_money_nodepath", "order_menu_nodepath", "in_ui_nodepath", "score_nodepath", "money_nodepath")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_ddoul")
+fuel_tank_nodepath = NodePath("in game ui/Fuel Tank/TextureProgressBar")
+shop_menu_nodepath = NodePath("Shop menu")
+shop_menu_money_nodepath = NodePath("Shop menu/shop menu monney")
+order_menu_nodepath = NodePath("orders menu")
+in_ui_nodepath = NodePath("in game ui")
+score_nodepath = NodePath("in game ui/Score")
+money_nodepath = NodePath("in game ui/Money")
+
+[node name="in game ui" type="Control" parent="UI/UI" unique_id=1840241838]
+anchors_preset = 0
+
+[node name="Fuel Tank" type="Node2D" parent="UI/UI/in game ui" unique_id=929239112]
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/UI/in game ui/Fuel Tank" unique_id=1678362948]
 texture_filter = 1
 position = Vector2(52.000008, 559.00006)
 scale = Vector2(5, 5)
 texture = ExtResource("3_tok1r")
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer" unique_id=1124038517]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="UI/UI/in game ui/Fuel Tank" unique_id=1124038517]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -534.0
-offset_top = 199.0
-offset_right = -514.0
-offset_bottom = 300.0
+offset_left = 42.0
+offset_top = 524.0
+offset_right = 62.0
+offset_bottom = 625.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -76,6 +97,98 @@ fill_mode = 3
 nine_patch_stretch = true
 texture_under = SubResource("GradientTexture1D_8g4oa")
 texture_progress = SubResource("GradientTexture1D_vlldt")
+
+[node name="Money" type="Label" parent="UI/UI/in game ui" unique_id=872416791]
+layout_mode = 0
+offset_left = 520.0
+offset_top = 17.0
+offset_right = 560.0
+offset_bottom = 40.0
+text = "$100"
+
+[node name="Score" type="Label" parent="UI/UI/in game ui" unique_id=1290312355]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 14.0
+offset_right = 463.0
+offset_bottom = 37.0
+text = "Score: 100"
+
+[node name="orders menu" type="Control" parent="UI/UI" unique_id=1100007745]
+visible = false
+anchors_preset = 0
+
+[node name="ColorRect" type="ColorRect" parent="UI/UI/orders menu" unique_id=698502172]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 46.0
+offset_right = 1098.0
+offset_bottom = 592.0
+color = Color(0.32082382, 0.6289895, 1, 1)
+
+[node name="Shop menu" type="Control" parent="UI/UI" unique_id=817173575]
+visible = false
+anchors_preset = 0
+
+[node name="ColorRect" type="ColorRect" parent="UI/UI/Shop menu" unique_id=1427234070]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 46.0
+offset_right = 1098.0
+offset_bottom = 592.0
+color = Color(0.91011816, 0.50030404, 0, 1)
+
+[node name="Label" type="Label" parent="UI/UI/Shop menu" unique_id=996268869]
+layout_mode = 0
+offset_left = 524.0
+offset_top = 56.0
+offset_right = 632.0
+offset_bottom = 111.0
+theme_override_font_sizes/font_size = 40
+text = "Shop"
+
+[node name="shop menu monney" type="Label" parent="UI/UI/Shop menu" unique_id=62144215]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 58.0
+offset_right = 241.0
+offset_bottom = 113.0
+theme_override_font_sizes/font_size = 40
+text = "Money"
+
+[node name="GridContainer" type="GridContainer" parent="UI/UI/Shop menu" unique_id=2106996670]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 114.0
+offset_top = 129.0
+offset_right = 1074.0
+offset_bottom = 571.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 40
+theme_override_constants/v_separation = 50
+columns = 6
+
+[node name="Control" type="VBoxContainer" parent="UI/UI/Shop menu/GridContainer" unique_id=1474044438]
+layout_mode = 2
+
+[node name="ColorRect" type="TextureRect" parent="UI/UI/Shop menu/GridContainer/Control" unique_id=113903560]
+layout_mode = 2
+theme = ExtResource("5_8g4oa")
+texture = ExtResource("1_3qydi")
+
+[node name="Label" type="Label" parent="UI/UI/Shop menu/GridContainer/Control" unique_id=194034348]
+layout_mode = 2
+theme = ExtResource("5_8g4oa")
+text = "Goo Type 1"
+horizontal_alignment = 1
+
+[node name="1" type="Button" parent="UI/UI/Shop menu/GridContainer/Control" unique_id=1174276210]
+layout_mode = 2
+theme = ExtResource("5_8g4oa")
+text = "Buy"
 
 [node name="Pickup range" type="Area2D" parent="." unique_id=1672938088]
 
@@ -93,5 +206,6 @@ monitorable = false
 shape = SubResource("RectangleShape2D_ddoul")
 debug_color = Color(0.7529412, 0, 0.79607844, 0.6784314)
 
+[connection signal="pressed" from="UI/UI/Shop menu/GridContainer/Control/1" to="UI/UI" method="_on__pressed" binds= [1]]
 [connection signal="body_entered" from="Pickup range" to="." method="_on_body_enter_pickup_area"]
 [connection signal="body_exited" from="Pickup range" to="." method="_on_body_exit_pickup_area"]

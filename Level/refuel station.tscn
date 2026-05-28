@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://r7my86f4toiv" path="res://icon.svg" id="1_y4tvf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y4tvf"]
-size = Vector2(112, 31)
+size = Vector2(56, 9)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r8ot5"]
 size = Vector2(75, 250)
@@ -26,7 +26,7 @@ script = ExtResource("1_r8ot5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1912201910]
 z_index = 20
-position = Vector2(-96, 1.5)
+position = Vector2(-90, 0.5)
 shape = SubResource("RectangleShape2D_y4tvf")
 debug_color = Color(0.8156863, 0.20784314, 0.85882354, 0.8117647)
 
