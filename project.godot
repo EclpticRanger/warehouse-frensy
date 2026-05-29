@@ -31,6 +31,7 @@ folder_colors={
 "res://Assets/Audio/": "blue",
 "res://Assets/Temperary Assets/": "red",
 "res://Level/": "purple",
+"res://Main Menu/": "yellow",
 "res://Player/": "orange"
 }
 

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://d0p0pj7fpb05a"]
+
+[ext_resource type="Script" uid="uid://defiebif02m4h" path="res://Main Menu/main_menu.gd" id="1_5ms5j"]
+[ext_resource type="AudioStream" uid="uid://bkayoj7q0vn74" path="res://Assets/Audio/Music/main menu.mp3" id="2_i0jnm"]
+
+[node name="MainMenu" type="Control" unique_id=1663390276]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5ms5j")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2041271438]
+stream = ExtResource("2_i0jnm")
+autoplay = true
