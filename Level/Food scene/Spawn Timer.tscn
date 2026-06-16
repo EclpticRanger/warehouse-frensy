@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://bajrp6yen16ux"]
+
+[node name="SpawnTimer" type="Timer" unique_id=1795500300]
+one_shot = true
+autostart = true

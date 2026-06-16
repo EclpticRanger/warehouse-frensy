@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://bo40l4l3miv8y"]
 
 [ext_resource type="PackedScene" uid="uid://bco0rv30rf8xj" path="res://Player/Player.tscn" id="1_ce3we"]
-[ext_resource type="PackedScene" uid="uid://qds8cb40y1s3" path="res://Level/Food scene/tmpbox.tscn" id="1_e2dvy"]
 [ext_resource type="Texture2D" uid="uid://r7my86f4toiv" path="res://icon.svg" id="1_hjgrw"]
+[ext_resource type="Script" uid="uid://ob6fprnqx5va" path="res://Level/map.gd" id="1_snje6"]
+[ext_resource type="PackedScene" uid="uid://b10g1etgavm56" path="res://Level/delevery station.tscn" id="4_iv6in"]
 [ext_resource type="PackedScene" uid="uid://bt48esdiy3jmh" path="res://Level/refuel station.tscn" id="4_m6451"]
 [ext_resource type="Script" uid="uid://c083atuk15bm8" path="res://Level/box_spawner.gd" id="5_iv6in"]
 
@@ -10,6 +11,7 @@
 size = Vector2(341, 74)
 
 [node name="Map" type="Node2D" unique_id=896304998]
+script = ExtResource("1_snje6")
 
 [node name="shelvs" type="Node2D" parent="." unique_id=1948633486]
 
@@ -102,16 +104,15 @@ texture = ExtResource("1_hjgrw")
 position = Vector2(280.5, 129)
 shape = SubResource("RectangleShape2D_m6451")
 
-[node name="Tmpbox" parent="." unique_id=547495598 instance=ExtResource("1_e2dvy")]
-position = Vector2(361, 237)
-scale = Vector2(0.5, 0.5)
-
 [node name="Player" parent="." unique_id=1473017971 instance=ExtResource("1_ce3we")]
 position = Vector2(230, 236)
 scale = Vector2(0.5, 0.5)
 
 [node name="RefuelStation" parent="." unique_id=810362400 instance=ExtResource("4_m6451")]
 position = Vector2(1301, 442)
+
+[node name="DeleveryStation" parent="." unique_id=97045465 instance=ExtResource("4_iv6in")]
+position = Vector2(578, -150)
 
 [node name="Box Spawner" type="Node2D" parent="." unique_id=1282600935]
 script = ExtResource("5_iv6in")
@@ -120,3 +121,14 @@ metadata/_edit_group_ = true
 [node name="Sprite2D" type="Sprite2D" parent="Box Spawner" unique_id=2012226665]
 visible = false
 texture = ExtResource("1_hjgrw")
+
+[node name="Orders" type="Node2D" parent="." unique_id=2090791979]
+
+[node name="Timers" type="Node" parent="Orders" unique_id=1686466418]
+
+[node name="Diffulty up" type="Timer" parent="Orders/Timers" unique_id=2133183242]
+
+[node name="new order" type="Timer" parent="Orders/Timers" unique_id=1841775557]
+autostart = true
+
+[connection signal="timeout" from="Orders/Timers/new order" to="." method="_on_new_order_timeout"]

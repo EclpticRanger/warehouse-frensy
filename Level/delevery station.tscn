@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://b10g1etgavm56"]
+
+[ext_resource type="Texture2D" uid="uid://r7my86f4toiv" path="res://icon.svg" id="1_65hr5"]
+[ext_resource type="Script" uid="uid://bop87h6omu5o4" path="res://Level/delevery_station.gd" id="1_we4j1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cj6kq"]
+size = Vector2(68, 69)
+
+[node name="DeleveryStation" type="Area2D" unique_id=370444369]
+script = ExtResource("1_we4j1")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1473778076]
+self_modulate = Color(1, 0, 1, 1)
+position = Vector2(3.8146973e-06, -3.8146973e-06)
+scale = Vector2(1.515625, 1.515625)
+texture = ExtResource("1_65hr5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=333341804]
+shape = SubResource("RectangleShape2D_cj6kq")
+debug_color = Color(0.7919351, 0.24071383, 0.87083334, 0.41960785)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

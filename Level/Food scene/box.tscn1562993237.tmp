@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://qds8cb40y1s3"]
 
-[ext_resource type="Script" uid="uid://c7pon6urfxfsg" path="res://Level/Food scene/tmpbox.gd" id="1_afe1n"]
-[ext_resource type="Texture2D" uid="uid://r7my86f4toiv" path="res://icon.svg" id="1_oiu81"]
+[ext_resource type="Script" uid="uid://c7pon6urfxfsg" path="res://Level/Food scene/box.gd" id="1_f2oai"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_afe1n"]
 size = Vector2(123, 121)
@@ -9,11 +8,10 @@ size = Vector2(123, 121)
 [node name="Tmpbox" type="StaticBody2D" unique_id=1308109813 groups=["Pickapable"]]
 modulate = Color(0.68463004, 0.23533916, 0.10067687, 1)
 z_index = 5
-script = ExtResource("1_afe1n")
+script = ExtResource("1_f2oai")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=78890515]
 position = Vector2(0, -1)
-texture = ExtResource("1_oiu81")
 offset = Vector2(0, -131)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1486782188]

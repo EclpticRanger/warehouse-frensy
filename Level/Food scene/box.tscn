@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://qds8cb40y1s3"]
+
+[ext_resource type="Script" uid="uid://c7pon6urfxfsg" path="res://Level/Food scene/box.gd" id="1_f2oai"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_afe1n"]
+size = Vector2(121, 121)
+
+[node name="Box" type="StaticBody2D" unique_id=1308109813 groups=["Pickapable"]]
+modulate = Color(0.6862745, 0.23529412, 0.101960786, 1)
+z_index = 5
+script = ExtResource("1_f2oai")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=78890515]
+z_index = 75
+position = Vector2(0, -1)
+offset = Vector2(0, -131)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1486782188]
+position = Vector2(0, -129)
+shape = SubResource("RectangleShape2D_afe1n")
+
+[node name="Spawn Timer" type="Timer" parent="." unique_id=801956230]
+one_shot = true
+
+[connection signal="timeout" from="Spawn Timer" to="." method="_on_spawn_timer_timeout"]
