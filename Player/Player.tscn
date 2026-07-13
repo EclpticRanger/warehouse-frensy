@@ -307,7 +307,7 @@ horizontal_scroll_mode = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/UI/Shop menu/Orders/ScrollContainer" unique_id=1066867031]
 layout_mode = 2
-theme_override_constants/separation = 15
+theme_override_constants/separation = 7
 
 [node name="1" type="MarginContainer" parent="UI/UI/Shop menu/Orders/ScrollContainer/HBoxContainer" unique_id=126540425]
 layout_mode = 2

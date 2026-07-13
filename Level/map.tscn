@@ -129,7 +129,7 @@ texture = ExtResource("1_hjgrw")
 [node name="Diffulty up" type="Timer" parent="Orders/Timers" unique_id=2133183242]
 
 [node name="new order" type="Timer" parent="Orders/Timers" unique_id=1841775557]
-wait_time = 30.0
+wait_time = 2.0
 autostart = true
 
 [connection signal="timeout" from="Orders/Timers/new order" to="." method="_on_new_order_timeout"]

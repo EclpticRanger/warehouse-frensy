@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://bt48esdiy3jmh"]
 
-[ext_resource type="Script" uid="uid://dnabdodc58y74" path="res://Level/refuel_station.gd" id="1_r8ot5"]
 [ext_resource type="Texture2D" uid="uid://coof6gp8xmfu4" path="res://Assets/Art/Level Assets/Building and Furniture/refuling-station.png" id="2_r8ot5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y4tvf"]
@@ -16,7 +15,6 @@ size = Vector2(54, 137)
 collision_layer = 64
 collision_mask = 0
 monitoring = false
-script = ExtResource("1_r8ot5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1912201910]
 z_index = 20

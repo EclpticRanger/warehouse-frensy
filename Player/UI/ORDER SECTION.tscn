@@ -9,6 +9,7 @@
 layout_mode = 2
 theme = ExtResource("1_134b3")
 texture = ExtResource("2_j1ynf")
+expand_mode = 4
 
 [node name="Label" type="Label" parent="." unique_id=828434804]
 layout_mode = 2

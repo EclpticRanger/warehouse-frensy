@@ -26,10 +26,10 @@ var diffculty_mutiplyer = 1
 var masses = []
 var weights = []
 
-#func _ready() -> void:
-#	for i in range(Box_db.Box_list.size()-1):
-#		total_weight += Box_db.Box_list.get(i).weight
-#		weights.append(Box_db.Box_list.get(i+1).weight)
+func _ready() -> void:
+	for i in range(Box_db.Box_list.size()):
+		total_weight += Box_db.Box_list.get(i).weight
+		weights.append(Box_db.Box_list.get(i).weight)
 
 func reset_values():
 	score = 0
@@ -63,28 +63,28 @@ func start():
 		diffculty_mutiplyer = 2.5
 	#new_order()
 
-#func new_order():
-#	if len(Globals.active_orders) >= 5:
-#		return
-#	var order: Dictionary[int, int]
-#	var max_mass: int = defult_mass * score_scale_multaplyer * diffculty_mutiplyer
-#	var mass = 0
-#	while true:
-#		if mass >= max_mass:
-#			break
-#		var id_chosen = find_found_weight(randi_range(1, total_weight), weights)
+func new_order():
+	if len(active_orders) >= 5:
+		return
+	var order: Dictionary[int, int]
+	var max_mass: int = defult_mass * score_scale_multaplyer * diffculty_mutiplyer
+	var mass = 0
+	while true:
+		if mass >= max_mass:
+			break
+		var id_chosen = find_found_weight(randi_range(1, total_weight), weights) -1
 
-#		if id_chosen in order:
-#			order[id_chosen] += 1
-#		else: order[id_chosen] = 1
-#		mass += Box_db.Box_list.get(id_chosen).price
+		if id_chosen in order:
+			order[id_chosen] += 1
+		else: order[id_chosen] = 1
+		mass += Box_db.Box_list.get(id_chosen).price
 	
-#	print(order)
-#	Globals.active_orders.append(order)
+	print(order)
+	Globals.active_orders.append(order)
 
-func find_found_weight(random_number: int, weights: Array):
+func find_found_weight(random_number: int, box_weights: Array):
 	var total: int = 0
-	for i in range(len(weights)):
-		total += weights[i]
+	for i in range(len(box_weights)):
+		total += box_weights[i]
 		if total >= random_number:
 			return i + 1
