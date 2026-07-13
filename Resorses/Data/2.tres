@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BoxData" format=3 uid="uid://b4kkjqfeag6pj"]
+
+[ext_resource type="Script" uid="uid://coixq670i6g65" path="res://Resorses/BoxData.gd" id="1_p5foj"]
+[ext_resource type="Texture2D" uid="uid://dlu6xw3oj6hpb" path="res://Assets/Art/Level Assets/Food/box2.png" id="2_4vx21"]
+
+[resource]
+script = ExtResource("1_p5foj")
+id = 2
+name = "Redskin Lilishes"
+texture = ExtResource("2_4vx21")
+price = 15
+weight = 65
+sell_price = 30
+spawn_timer = 10.0
+metadata/_custom_type_script = "uid://coixq670i6g65"

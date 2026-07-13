@@ -12,15 +12,20 @@ config_version=5
 
 config/name="Wearhouse Frensy"
 config/tags=PackedStringArray("2d", "menu")
-run/main_scene="uid://bo40l4l3miv8y"
+run/main_scene="uid://d0p0pj7fpb05a"
 config/features=PackedStringArray("4.6", "GL Compatibility")
+boot_splash/image="uid://u60isfrga8no"
 config/icon="res://icon.svg"
 
 [autoload]
 
 Signal_Bus="*uid://rvdk07d6g2d0"
 Globals="*uid://2ilkbhptwbk4"
-Info="*uid://000pnkotxx2k"
+
+[display]
+
+window/size/mode=3
+window/stretch/mode="canvas_items"
 
 [file_customization]
 
@@ -32,7 +37,8 @@ folder_colors={
 "res://Assets/Temperary Assets/": "red",
 "res://Level/": "purple",
 "res://Main Menu/": "yellow",
-"res://Player/": "orange"
+"res://Player/": "orange",
+"res://Resorses/": "green"
 }
 
 [global]
@@ -46,6 +52,7 @@ radioactive=""
 player=""
 ReFuel=""
 spoilable=""
+box=""
 
 [input]
 
@@ -102,3 +109,4 @@ pointing/emulate_touch_from_mouse=true
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true

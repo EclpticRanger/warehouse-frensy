@@ -23,6 +23,9 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("menu"):
 		in_game_ui.visible = not in_game_ui.visible 
 		shop_ui.visible = not shop_ui.visible
+	if Input.is_action_just_pressed("ui_cancel"):
+		in_game_ui.visible = not in_game_ui.visible 
+		shop_ui.visible = not shop_ui.visible
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

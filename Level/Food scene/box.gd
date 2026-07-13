@@ -9,9 +9,9 @@ var being_held: bool = false
 func _ready() -> void:
 	$CollisionShape2D.disabled = true
 	hide()
-	var box_texture: Texture = load(Info.Boxes_ids[id][3])
+	var box_texture: Texture = Globals.Box_db.Box_list.get(id).texture
 	$Sprite2D.texture = box_texture
-	$"Spawn Timer".wait_time = Info.Boxes_ids[id][8]
+	$"Spawn Timer".wait_time = Globals.Box_db.Box_list.get(id).spawn_timer
 	$"Spawn Timer".start()
 	Signal_Bus.i_a_box_spawned.emit(self, $"Spawn Timer")
 
@@ -19,7 +19,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if being_held and player != null:
-		position = player.position
+		position = player.positions
 		rotation = player.rotation
 		$CollisionShape2D.disabled = true
 	else: $CollisionShape2D.disabled = false

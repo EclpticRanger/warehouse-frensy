@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="box_database" format=3 uid="uid://bi48pmwwmccqg"]
+
+[ext_resource type="Script" uid="uid://coixq670i6g65" path="res://Resorses/BoxData.gd" id="1_qosxn"]
+[ext_resource type="Script" uid="uid://bigq4i2yg4ic6" path="res://Resorses/Box_database.gd" id="2_0seds"]
+[ext_resource type="Resource" uid="uid://cmbdbel718e6r" path="res://Resorses/Data/1.tres" id="2_68bra"]
+[ext_resource type="Resource" uid="uid://b4kkjqfeag6pj" path="res://Resorses/Data/2.tres" id="3_e5ga5"]
+[ext_resource type="Resource" uid="uid://d1y0ilcanxw6h" path="res://Resorses/Data/3.tres" id="4_nu8kv"]
+
+[sub_resource type="Resource" id="Resource_2mkxh"]
+script = ExtResource("1_qosxn")
+metadata/_custom_type_script = "uid://coixq670i6g65"
+
+[resource]
+script = ExtResource("2_0seds")
+Box_list = Array[ExtResource("1_qosxn")]([SubResource("Resource_2mkxh"), ExtResource("2_68bra"), ExtResource("3_e5ga5"), ExtResource("4_nu8kv")])
+metadata/_custom_type_script = "uid://bigq4i2yg4ic6"

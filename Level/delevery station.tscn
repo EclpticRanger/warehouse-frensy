@@ -7,6 +7,9 @@
 size = Vector2(68, 69)
 
 [node name="DeleveryStation" type="Area2D" unique_id=370444369]
+collision_layer = 0
+collision_mask = 4096
+monitorable = false
 script = ExtResource("1_we4j1")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1473778076]
@@ -19,4 +22,5 @@ texture = ExtResource("1_65hr5")
 shape = SubResource("RectangleShape2D_cj6kq")
 debug_color = Color(0.7919351, 0.24071383, 0.87083334, 0.41960785)
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

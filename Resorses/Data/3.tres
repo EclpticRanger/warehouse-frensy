@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BoxData" format=3 uid="uid://d1y0ilcanxw6h"]
+
+[ext_resource type="Script" uid="uid://coixq670i6g65" path="res://Resorses/BoxData.gd" id="1_v74nb"]
+[ext_resource type="Texture2D" uid="uid://r7my86f4toiv" path="res://icon.svg" id="2_8wfgh"]
+
+[resource]
+script = ExtResource("1_v74nb")
+id = 3
+name = "Name 3"
+texture = ExtResource("2_8wfgh")
+price = 20
+weight = 40
+sell_price = 35
+spawn_timer = 15.0
+metadata/_custom_type_script = "uid://coixq670i6g65"

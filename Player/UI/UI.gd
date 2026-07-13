@@ -20,10 +20,24 @@ var Delivering_items = []
 
 func _ready() -> void:
 	Deleverys_h_box.set_anchors_preset(Control.PRESET_FULL_RECT)
-
 	
 	Signal_Bus.change_fuel.connect(on_fuel_changed)
 	Signal_Bus.box_spawned.connect(on_box_spawned)
+	
+	$"Shop menu".hide()
+	$"in game ui".show()
+	$"Shop menu/Shop".show()
+	$"Shop menu/Shop/GridContainer/Control/ColorRect".texture = Globals.Box_db.Box_list.get(1).texture
+	$"Shop menu/Shop/GridContainer/Control/Label".text = Globals.Box_db.Box_list.get(1).name
+	$"Shop menu/Shop/GridContainer/Control/Label2".text = "Price: " + str(Globals.Box_db.Box_list.get(1).price)
+	
+	$"Shop menu/Shop/GridContainer/Control2/ColorRect".texture = Globals.Box_db.Box_list.get(2).texture
+	$"Shop menu/Shop/GridContainer/Control2/Label".text = Globals.Box_db.Box_list.get(2).name
+	$"Shop menu/Shop/GridContainer/Control2/Label2".text = "Price: " + str(Globals.Box_db.Box_list.get(2).price)
+	
+	$"Shop menu/Shop/GridContainer/Control3/ColorRect".texture = Globals.Box_db.Box_list.get(3).texture
+	$"Shop menu/Shop/GridContainer/Control3/Label".text = Globals.Box_db.Box_list.get(3).name
+	$"Shop menu/Shop/GridContainer/Control3/Label2".text = "Price: " + str(Globals.Box_db.Box_list.get(3).price)
 
 func _process(_delta: float) -> void:
 	
@@ -52,28 +66,25 @@ func _process(_delta: float) -> void:
 			for orderID in $"Shop menu/Orders/ScrollContainer/HBoxContainer".get_children():
 				if get_node("Shop menu/Orders/ScrollContainer/HBoxContainer/%s/VBoxContainer/VBoxContainer" % i):
 					for child in get_node("Shop menu/Orders/ScrollContainer/HBoxContainer/%s/VBoxContainer/VBoxContainer" % i).get_children():
-						print(child)
 						child.queue_free()
 					i += 1
-			i = 1
+			i = 0
 			for order in Globals.active_orders:
-				var j = 0
 				for ids in order:
-					var add_child_path = get_node("Shop menu/Orders/ScrollContainer/HBoxContainer/" + str(i) + "/VBoxContainer/VBoxContainer")
+					var add_child_path = get_node("Shop menu/Orders/ScrollContainer/HBoxContainer/" + str(i + 1) + "/VBoxContainer/VBoxContainer")
 					var item = load("res://Player/UI/ORDER SECTION.tscn")
 					item = item.instantiate()
-					item.get_node("ColorRect").texture = load(Info.Boxes_ids[ids][3])
-					item.get_node("Label").text = Info.Boxes_ids[ids][1] + ": " + Globals.active_orders[i][j]
-					get_node(add_child_path).add_child(item)
-					j += 1
+					item.get_node("ColorRect").texture = Globals.Box_db.Box_list.get(ids).texture
+					item.get_node("Label").text = Globals.Box_db.Box_list.get(ids).name + ": " + str(Globals.active_orders[i][ids])
+					add_child_path.add_child(item)
 				i += 1
 
 func on_fuel_changed(fuel):
 	fuel_tank_bar.value = fuel[0]
 
 func check_box_purchis(id: int):
-	if Info.Boxes_ids[id][6] <= Globals.money:
-		Globals.money -= Info.Boxes_ids[id][6]
+	if Globals.Box_db.Box_list.get(id).price <= Globals.money:
+		Globals.money -= Globals.Box_db.Box_list.get(id).price
 		return true
 	else: 
 		print("Out of money")

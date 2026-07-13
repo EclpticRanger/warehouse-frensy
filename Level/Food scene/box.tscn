@@ -1,25 +1,42 @@
 [gd_scene format=3 uid="uid://qds8cb40y1s3"]
 
 [ext_resource type="Script" uid="uid://c7pon6urfxfsg" path="res://Level/Food scene/box.gd" id="1_f2oai"]
+[ext_resource type="Script" uid="uid://c5fw5wwdacgsa" path="res://Level/Food scene/area_2d.gd" id="2_dk4y3"]
+[ext_resource type="Texture2D" uid="uid://dlu6xw3oj6hpb" path="res://Assets/Art/Level Assets/Food/box2.png" id="2_fqo84"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_afe1n"]
 size = Vector2(121, 121)
 
-[node name="Box" type="StaticBody2D" unique_id=1308109813 groups=["Pickapable"]]
-modulate = Color(0.6862745, 0.23529412, 0.101960786, 1)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f2oai"]
+size = Vector2(130, 130)
+
+[node name="Box" type="StaticBody2D" unique_id=1308109813 groups=["Pickapable", "box"]]
 z_index = 5
 script = ExtResource("1_f2oai")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=78890515]
 z_index = 75
-position = Vector2(0, -1)
-offset = Vector2(0, -131)
+texture_filter = 1
+position = Vector2(0.5, 195.23398)
+scale = Vector2(2.6093752, 2.5781245)
+texture = ExtResource("2_fqo84")
+offset = Vector2(0, -121)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1486782188]
-position = Vector2(0, -129)
+position = Vector2(0, -117)
 shape = SubResource("RectangleShape2D_afe1n")
 
 [node name="Spawn Timer" type="Timer" parent="." unique_id=801956230]
 one_shot = true
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1770900689 groups=["box"]]
+collision_layer = 4096
+collision_mask = 0
+monitoring = false
+script = ExtResource("2_dk4y3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=473934267 groups=["box"]]
+position = Vector2(0, -117)
+shape = SubResource("RectangleShape2D_f2oai")
 
 [connection signal="timeout" from="Spawn Timer" to="." method="_on_spawn_timer_timeout"]

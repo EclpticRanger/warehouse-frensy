@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BoxData" format=3 uid="uid://cmbdbel718e6r"]
+
+[ext_resource type="Script" uid="uid://coixq670i6g65" path="res://Resorses/BoxData.gd" id="1_sm3aa"]
+[ext_resource type="Texture2D" uid="uid://blkk3t6pvfyev" path="res://Assets/Art/Level Assets/Food/Box 1.png" id="2_21nvi"]
+
+[resource]
+script = ExtResource("1_sm3aa")
+id = 1
+name = "Tenticle Juice"
+texture = ExtResource("2_21nvi")
+price = 10
+weight = 100
+sell_price = 20
+spawn_timer = 5.0
+metadata/_custom_type_script = "uid://coixq670i6g65"
