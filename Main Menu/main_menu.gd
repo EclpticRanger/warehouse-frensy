@@ -1,7 +1,7 @@
 extends Control
 
 func _on_play_pressed() -> void:
-	Globals.diferculty = $Container/VBoxContainer/VBoxContainer/OptionButton.selected
+	Globals.diferculty = $PanelContainer/VBoxContainer/VBoxContainer/OptionButton.selected
 	get_tree().change_scene_to_file("res://Level/map.tscn")
 
 

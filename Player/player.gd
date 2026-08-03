@@ -4,7 +4,8 @@ var is_holding: bool = false
 
 var move_speed: int = 20000
 var fuel: float = 100
-var fuel_rate: float = 1.5
+var fuel_rate: float = 0.5
+var fuel_refule_rate: float = 3
 
 var in_pickup_range: Array = []
 
@@ -14,6 +15,8 @@ var holing
 @onready var in_game_ui = $"UI/UI/in game ui"
 @onready var shop_ui = $"UI/UI/Shop menu"
 
+func _enter_tree() -> void:
+	Globals.player = self
 
 func _ready() -> void:
 	pass
@@ -30,6 +33,7 @@ func _process(_delta: float) -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
+	Globals.clear_fuffled_order()
 	handel_movement(delta)
 	handel_refuel(delta)
 	handel_pickup()
@@ -40,7 +44,7 @@ func handel_movement(delta):
 	var left_right = Input.get_axis("left", "right")
 	
 	if forward_back != 0 or left_right != 0:
-		fuel -= delta * fuel_rate
+		fuel -= delta * fuel_rate 
 	rotation += left_right * delta * 4
 	velocity = Vector2.UP.rotated(rotation) * forward_back * move_speed * delta
 	move_and_slide()
@@ -49,7 +53,7 @@ func handel_movement(delta):
 func handel_refuel(delta):
 	if Input.is_action_pressed("refuel") and len($"Refull Detection".get_overlapping_areas()) > 0:
 		if fuel < 100 and Globals.money > 0:
-			fuel += fuel_rate * delta * 10
+			fuel += fuel_refule_rate * delta * 10
 			Globals.money -= delta * 10
 		elif fuel > 100:
 			fuel = 100

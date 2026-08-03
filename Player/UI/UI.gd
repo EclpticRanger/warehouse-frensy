@@ -44,7 +44,8 @@ func _process(_delta: float) -> void:
 	#In Game UI
 	if $"in game ui".visible:
 		money.text = "$" + str(int(round(Globals.money)))
-		score.text = "Score " + str(Globals.score) 
+		score.text = "Score " + str(Globals.score)
+		$"in game ui/RichTextLabel".text = "\n".join(Globals.active_orders) 
 	
 	#Shop Menu
 	elif $"Shop menu".visible:

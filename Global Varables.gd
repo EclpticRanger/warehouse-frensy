@@ -1,6 +1,7 @@
 extends Node
 
 var Box_db: box_database = load("res://Resorses/Data/db.tres")
+var player
 
 var score : int = 0
 #Difficulty
@@ -44,6 +45,8 @@ func clear_fuffled_order():
 		for id in order:
 			if order[id] <= 0:
 				order.erase(id)
+		if order == {}:
+			active_orders.erase(order)
 
 func remove_box_from_orders(id: int):
 	for order in active_orders:
@@ -79,7 +82,6 @@ func new_order():
 		else: order[id_chosen] = 1
 		mass += Box_db.Box_list.get(id_chosen).price
 	
-	print(order)
 	Globals.active_orders.append(order)
 
 func find_found_weight(random_number: int, box_weights: Array):

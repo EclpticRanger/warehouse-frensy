@@ -14,8 +14,9 @@ config/name="Wearhouse Frensy"
 config/tags=PackedStringArray("2d", "menu")
 run/main_scene="uid://d0p0pj7fpb05a"
 config/features=PackedStringArray("4.6", "GL Compatibility")
-boot_splash/image="uid://u60isfrga8no"
+boot_splash/image="uid://bbtwn6w0hkjte"
 config/icon="res://icon.svg"
+boot_splash/minimum_display_time=2000
 
 [autoload]
 

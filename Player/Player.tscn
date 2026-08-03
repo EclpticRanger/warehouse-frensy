@@ -9,7 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://cex8dmlda03k" path="res://Assets/Art/Player/Forklift_0002.png" id="3_v0k0e"]
 [ext_resource type="Theme" uid="uid://b8lg4cd08m63h" path="res://Theme.tres" id="5_8g4oa"]
 [ext_resource type="Texture2D" uid="uid://blkk3t6pvfyev" path="res://Assets/Art/Level Assets/Food/Box 1.png" id="6_6ysni"]
+[ext_resource type="FontFile" uid="uid://chl73gvbmp53o" path="res://Sterion-BLLld.ttf" id="7_v0k0e"]
 [ext_resource type="Texture2D" uid="uid://dlu6xw3oj6hpb" path="res://Assets/Art/Level Assets/Food/box2.png" id="7_vlldt"]
+[ext_resource type="Texture2D" uid="uid://cvwvfgyhdytxs" path="res://Assets/Art/Player/UI/ui eliment thingi.png" id="8_5wa8t"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5wa8t"]
 atlas = ExtResource("2_0j2ni")
@@ -81,6 +83,7 @@ scale = Vector2(1.257, 1.206)
 texture = ExtResource("3_0j2ni")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1396612444]
+visible = false
 position = Vector2(0, 7)
 shape = SubResource("CircleShape2D_q3lat")
 
@@ -137,19 +140,38 @@ texture_progress = SubResource("GradientTexture1D_vlldt")
 
 [node name="Money" type="Label" parent="UI/UI/in game ui" unique_id=872416791]
 layout_mode = 0
-offset_left = 520.0
-offset_top = 17.0
-offset_right = 560.0
-offset_bottom = 40.0
-text = "$100"
+offset_left = 12.0
+offset_top = 70.0
+offset_right = 121.0
+offset_bottom = 96.0
+theme_override_fonts/font = ExtResource("7_v0k0e")
+theme_override_font_sizes/font_size = 26
+text = "&: 100"
 
 [node name="Score" type="Label" parent="UI/UI/in game ui" unique_id=1290312355]
 layout_mode = 0
-offset_left = 384.0
-offset_top = 14.0
-offset_right = 463.0
-offset_bottom = 37.0
+offset_left = 12.0
+offset_top = 15.0
+offset_right = 201.0
+offset_bottom = 41.0
+theme_override_fonts/font = ExtResource("7_v0k0e")
+theme_override_font_sizes/font_size = 26
 text = "Score: 100"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/UI/in game ui" unique_id=1566112825]
+layout_mode = 0
+offset_left = 102.0
+offset_top = 524.0
+offset_right = 384.0
+offset_bottom = 699.0
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/UI/in game ui" unique_id=184185748]
+z_index = -1
+texture_filter = 1
+position = Vector2(168, 167)
+scale = Vector2(5.21875, 5.21875)
+texture = ExtResource("8_5wa8t")
+metadata/_edit_lock_ = true
 
 [node name="Shop menu" type="TabContainer" parent="UI/UI" unique_id=373749763]
 visible = false

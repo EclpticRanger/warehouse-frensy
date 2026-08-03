@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bt48esdiy3jmh"]
 
-[ext_resource type="Texture2D" uid="uid://coof6gp8xmfu4" path="res://Assets/Art/Level Assets/Building and Furniture/refuling-station.png" id="2_r8ot5"]
+[ext_resource type="Texture2D" uid="uid://cnaoswlqklf45" path="res://Assets/Art/Level Assets/refuling-station.png" id="1_y4tvf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y4tvf"]
 size = Vector2(85, 74)
@@ -26,7 +26,7 @@ debug_color = Color(0.8156863, 0.20784314, 0.85882354, 0.8117647)
 texture_filter = 1
 position = Vector2(-82, -2)
 scale = Vector2(4, 4)
-texture = ExtResource("2_r8ot5")
+texture = ExtResource("1_y4tvf")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1582242351]
 

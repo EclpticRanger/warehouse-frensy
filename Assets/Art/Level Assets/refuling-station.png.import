@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbtwn6w0hkjte"
-path="res://.godot/imported/Load immage.png-7937e5537171b2579ac909536d7842d7.ctex"
+uid="uid://cnaoswlqklf45"
+path="res://.godot/imported/refuling-station.png-4760a62e6608d9c631ff0e0cb851ef93.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Load immage.png"
-dest_files=["res://.godot/imported/Load immage.png-7937e5537171b2579ac909536d7842d7.ctex"]
+source_file="res://Assets/Art/Level Assets/refuling-station.png"
+dest_files=["res://.godot/imported/refuling-station.png-4760a62e6608d9c631ff0e0cb851ef93.ctex"]
 
 [params]
 

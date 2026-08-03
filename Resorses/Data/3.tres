@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_v74nb")
 id = 3
-name = "Name 3"
+name = "Alien Grass"
 texture = ExtResource("2_8wfgh")
 price = 20
 weight = 40

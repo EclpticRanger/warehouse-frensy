@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://coof6gp8xmfu4"
-path="res://.godot/imported/refuling-station.png-9ddd82d59adfbc056ee7b2a3cfcf26d2.ctex"
+uid="uid://cvwvfgyhdytxs"
+path="res://.godot/imported/ui eliment thingi.png-4e84b94c8a0fdf00047af9f9ba001737.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/Level Assets/Building and Furniture/refuling-station.png"
-dest_files=["res://.godot/imported/refuling-station.png-9ddd82d59adfbc056ee7b2a3cfcf26d2.ctex"]
+source_file="res://Assets/Art/Player/UI/ui eliment thingi.png"
+dest_files=["res://.godot/imported/ui eliment thingi.png-4e84b94c8a0fdf00047af9f9ba001737.ctex"]
 
 [params]
 
