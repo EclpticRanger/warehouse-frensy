@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://s7msmafoasfn"
-path="res://.godot/imported/Forklift_0001.png-6d92daa9d138ca5c1cbf73e331e25849.ctex"
+uid="uid://qcrev7l8caqi"
+path="res://.godot/imported/box3.png-0b8064c1d001ee79afe54d5ef08d1e78.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/Player/Forklift_0001.png"
-dest_files=["res://.godot/imported/Forklift_0001.png-6d92daa9d138ca5c1cbf73e331e25849.ctex"]
+source_file="res://Assets/Art/Level Assets/Food/box3.png"
+dest_files=["res://.godot/imported/box3.png-0b8064c1d001ee79afe54d5ef08d1e78.ctex"]
 
 [params]
 

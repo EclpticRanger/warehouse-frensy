@@ -5,6 +5,7 @@ func _on_area_entered(area: Area2D) -> void:
 		Globals.remove_box_from_orders(area.id)
 		Globals.score += Globals.Box_db.Box_list.get(area.id).sell_price
 		Globals.money += Globals.Box_db.Box_list.get(area.id).sell_price
+		Globals.player.get_child(-1).get_child(-1).playing = true
 		area.get_parent().queue_free()
 		
 		Globals.player.is_holding = false

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cex8dmlda03k"
-path="res://.godot/imported/Forklift_0002.png-fd2b136c03a4e9b442cfd3efbbbc056f.ctex"
+uid="uid://cmb266cyj4voh"
+path="res://.godot/imported/Forklifet particles.png-5701ab0f25e68acf311fa051491c7926.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/Player/Forklift_0002.png"
-dest_files=["res://.godot/imported/Forklift_0002.png-fd2b136c03a4e9b442cfd3efbbbc056f.ctex"]
+source_file="res://Assets/Art/Player/Forklifet particles.png"
+dest_files=["res://.godot/imported/Forklifet particles.png-5701ab0f25e68acf311fa051491c7926.ctex"]
 
 [params]
 

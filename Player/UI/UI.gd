@@ -38,6 +38,13 @@ func _ready() -> void:
 	$"Shop menu/Shop/GridContainer/Control3/ColorRect".texture = Globals.Box_db.Box_list.get(3).texture
 	$"Shop menu/Shop/GridContainer/Control3/Label".text = Globals.Box_db.Box_list.get(3).name
 	$"Shop menu/Shop/GridContainer/Control3/Label2".text = "Price: " + str(Globals.Box_db.Box_list.get(3).price)
+	
+	if Globals.tutoral:
+		$"in game ui/Fuel Tank".hide()
+		$"in game ui/Money".hide()
+		$"in game ui/Score".hide()
+		$"in game ui/Sprite2D".hide()
+	
 
 func _process(_delta: float) -> void:
 	
@@ -45,7 +52,11 @@ func _process(_delta: float) -> void:
 	if $"in game ui".visible:
 		money.text = "$" + str(int(round(Globals.money)))
 		score.text = "Score " + str(Globals.score)
-		$"in game ui/RichTextLabel".text = "\n".join(Globals.active_orders) 
+		$"in game ui/Control/Maker".set_position(Vector2(Globals.reputation * 2.273, -2))
+		if Globals.reputation >= 100:
+			Globals.reputation = 100
+		if Globals.reputation <= 0:
+			Globals.reputation = 0
 	
 	#Shop Menu
 	elif $"Shop menu".visible:
@@ -60,6 +71,7 @@ func _process(_delta: float) -> void:
 		#Shop
 		if $"Shop menu/Shop".visible:
 			shop_menu_money.text = "$" + str(int(round(Globals.money)))
+			
 		
 		#Orders Menu
 		if $"Shop menu/Orders".visible:
@@ -79,6 +91,12 @@ func _process(_delta: float) -> void:
 					item.get_node("Label").text = Globals.Box_db.Box_list.get(ids).name + ": " + str(Globals.active_orders[i][ids])
 					add_child_path.add_child(item)
 				i += 1
+			
+			$"Shop menu/Orders/ScrollContainer/HBoxContainer/1/VBoxContainer/time".text = str(int(Globals.order1_timer))
+			$"Shop menu/Orders/ScrollContainer/HBoxContainer/2/VBoxContainer/time".text = str(int(Globals.order2_timer))
+			$"Shop menu/Orders/ScrollContainer/HBoxContainer/3/VBoxContainer/time".text = str(int(Globals.order3_timer))
+			$"Shop menu/Orders/ScrollContainer/HBoxContainer/4/VBoxContainer/time".text = str(int(Globals.order4_timer))
+			$"Shop menu/Orders/ScrollContainer/HBoxContainer/5/VBoxContainer/time".text = str(int(Globals.order5_timer))
 
 func on_fuel_changed(fuel):
 	fuel_tank_bar.value = fuel[0]

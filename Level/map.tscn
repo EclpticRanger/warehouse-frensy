@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://b10g1etgavm56" path="res://Level/delevery station.tscn" id="4_iv6in"]
 [ext_resource type="PackedScene" uid="uid://bt48esdiy3jmh" path="res://Level/refuel station.tscn" id="4_m6451"]
 [ext_resource type="Script" uid="uid://c083atuk15bm8" path="res://Level/box_spawner.gd" id="5_iv6in"]
+[ext_resource type="Script" uid="uid://cd4qmnohlql7u" path="res://Level/Music Thingi.gd" id="8_oy2kr"]
+[ext_resource type="AudioStream" uid="uid://qnhxexoc3lbd" path="res://Assets/Audio/Music/Endless Repitition.mp3" id="9_e8kkd"]
+[ext_resource type="AudioStream" uid="uid://dcsyadpngxde3" path="res://Assets/Audio/Music/Acostic wind.mp3" id="10_6poxr"]
 
 [node name="Map" type="Node2D" unique_id=896304998]
 script = ExtResource("1_snje6")
@@ -52,7 +55,33 @@ texture = ExtResource("1_hjgrw")
 [node name="Diffulty up" type="Timer" parent="Orders/Timers" unique_id=2133183242]
 
 [node name="new order" type="Timer" parent="Orders/Timers" unique_id=1841775557]
-wait_time = 2.0
+wait_time = 30.0
 autostart = true
 
+[node name="Order 1" type="Timer" parent="Orders/Timers" unique_id=891968955]
+
+[node name="Order 2" type="Timer" parent="Orders/Timers" unique_id=489778931]
+
+[node name="Order 3" type="Timer" parent="Orders/Timers" unique_id=1645757111]
+
+[node name="Order 4" type="Timer" parent="Orders/Timers" unique_id=1067231945]
+
+[node name="Order 5" type="Timer" parent="Orders/Timers" unique_id=772847796]
+
+[node name="Node" type="Node" parent="." unique_id=427858918]
+script = ExtResource("8_oy2kr")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Node" unique_id=760726650]
+stream = ExtResource("9_e8kkd")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="Node" unique_id=2109166529]
+stream = ExtResource("10_6poxr")
+
 [connection signal="timeout" from="Orders/Timers/new order" to="." method="_on_new_order_timeout"]
+[connection signal="timeout" from="Orders/Timers/Order 1" to="." method="_on_order_timeout" binds= [1]]
+[connection signal="timeout" from="Orders/Timers/Order 2" to="." method="_on_order_timeout" binds= [2]]
+[connection signal="timeout" from="Orders/Timers/Order 3" to="." method="_on_order_timeout" binds= [3]]
+[connection signal="timeout" from="Orders/Timers/Order 4" to="." method="_on_order_timeout" binds= [4]]
+[connection signal="timeout" from="Orders/Timers/Order 5" to="." method="_on_order_timeout" binds= [5]]
+[connection signal="finished" from="Node/AudioStreamPlayer" to="Node" method="song_finished"]
+[connection signal="finished" from="Node/AudioStreamPlayer2" to="Node" method="song_finished"]

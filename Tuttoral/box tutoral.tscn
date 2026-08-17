@@ -1,12 +1,12 @@
-[gd_scene format=3 uid="uid://qds8cb40y1s3"]
+[gd_scene format=3 uid="uid://brplw7hrfpf1j"]
 
-[ext_resource type="Script" uid="uid://c7pon6urfxfsg" path="res://Level/Food scene/box.gd" id="1_f2oai"]
-[ext_resource type="Script" uid="uid://c5fw5wwdacgsa" path="res://Level/Food scene/area_2d.gd" id="2_dk4y3"]
-[ext_resource type="Texture2D" uid="uid://dlu6xw3oj6hpb" path="res://Assets/Art/Level Assets/Food/box2.png" id="2_fqo84"]
-[ext_resource type="Shader" uid="uid://dxqjjye68fr66" path="res://Player/Player_outline_shader.gdshader" id="2_rnnyj"]
+[ext_resource type="Script" uid="uid://bp5ljfsf071ux" path="res://Tuttoral/box tutoral.gd" id="1_cgci6"]
+[ext_resource type="Shader" uid="uid://dxqjjye68fr66" path="res://Player/Player_outline_shader.gdshader" id="2_g3wyu"]
+[ext_resource type="Texture2D" uid="uid://dlu6xw3oj6hpb" path="res://Assets/Art/Level Assets/Food/box2.png" id="3_m6x5b"]
+[ext_resource type="Script" uid="uid://c5fw5wwdacgsa" path="res://Level/Food scene/area_2d.gd" id="4_kne42"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bwcxh"]
-shader = ExtResource("2_rnnyj")
+shader = ExtResource("2_g3wyu")
 shader_parameter/outline_width = 0.02000000095
 shader_parameter/outline_tint = Color(1, 1, 1, 1)
 shader_parameter/atlas_region_pos = Vector2(0, 0)
@@ -16,14 +16,15 @@ shader_parameter/draw_size = Vector2(1, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_afe1n"]
 size = Vector2(121, 121)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cgci6"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f2oai"]
 size = Vector2(130, 130)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rnnyj"]
-
 [node name="Box" type="StaticBody2D" unique_id=1308109813 groups=["Pickapable", "box"]]
 z_index = 5
-script = ExtResource("1_f2oai")
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_cgci6")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=78890515]
 z_index = 150
@@ -31,7 +32,7 @@ texture_filter = 1
 material = SubResource("ShaderMaterial_bwcxh")
 position = Vector2(0.5, 195.23398)
 scale = Vector2(2.6093752, 2.5781245)
-texture = ExtResource("2_fqo84")
+texture = ExtResource("3_m6x5b")
 offset = Vector2(0, -121)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1486782188]
@@ -41,23 +42,24 @@ shape = SubResource("RectangleShape2D_afe1n")
 [node name="Spawn Timer" type="Timer" parent="." unique_id=801956230]
 one_shot = true
 
+[node name="place detection" type="Area2D" parent="." unique_id=1460252138]
+z_index = 1000
+collision_layer = 8192
+collision_mask = 8192
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="place detection" unique_id=1555954478]
+position = Vector2(0, -116)
+shape = SubResource("RectangleShape2D_cgci6")
+debug_color = Color(0.99863786, 0.03411801, 7.70092e-07, 0.41960785)
+
 [node name="Area2D" type="Area2D" parent="." unique_id=1770900689 groups=["box"]]
 collision_layer = 4096
 collision_mask = 0
 monitoring = false
-script = ExtResource("2_dk4y3")
+script = ExtResource("4_kne42")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=473934267 groups=["box"]]
 position = Vector2(0, -117)
 shape = SubResource("RectangleShape2D_f2oai")
-
-[node name="place detection" type="Area2D" parent="." unique_id=424968238]
-collision_layer = 0
-collision_mask = 8192
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="place detection" unique_id=1989785012]
-position = Vector2(0, -116)
-shape = SubResource("RectangleShape2D_rnnyj")
-debug_color = Color(0.99863786, 0.03411801, 7.70092e-07, 0.41960785)
 
 [connection signal="timeout" from="Spawn Timer" to="." method="_on_spawn_timer_timeout"]

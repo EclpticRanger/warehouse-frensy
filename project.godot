@@ -15,7 +15,7 @@ config/tags=PackedStringArray("2d", "menu")
 run/main_scene="uid://d0p0pj7fpb05a"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 boot_splash/image="uid://bbtwn6w0hkjte"
-config/icon="res://icon.svg"
+config/icon="uid://bbtwn6w0hkjte"
 boot_splash/minimum_display_time=2000
 
 [autoload]
@@ -39,7 +39,8 @@ folder_colors={
 "res://Level/": "purple",
 "res://Main Menu/": "yellow",
 "res://Player/": "orange",
-"res://Resorses/": "green"
+"res://Resorses/": "green",
+"res://Tuttoral/": "yellow"
 }
 
 [global]

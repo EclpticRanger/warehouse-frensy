@@ -23,12 +23,11 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	Signal_Bus.emit_signal("change_fuel", [fuel])
-	if Input.is_action_just_pressed("menu"):
-		in_game_ui.visible = not in_game_ui.visible 
-		shop_ui.visible = not shop_ui.visible
-	if Input.is_action_just_pressed("ui_cancel"):
-		in_game_ui.visible = not in_game_ui.visible 
-		shop_ui.visible = not shop_ui.visible
+	if Input.is_action_just_pressed("menu") or Input.is_action_just_pressed("ui_cancel"):
+		var can_menu: bool = (Globals.tutoral_level in [0])
+		if can_menu:
+			in_game_ui.visible = not in_game_ui.visible 
+			shop_ui.visible = not shop_ui.visible
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -42,6 +41,18 @@ func _physics_process(delta: float) -> void:
 func handel_movement(delta):
 	var forward_back = Input.get_axis("down", "up")
 	var left_right = Input.get_axis("left", "right")
+	if abs(forward_back) > 0 and abs(left_right) > 0:
+		var emit_particle = true
+		$Particles/GPUParticles2D.emitting = emit_particle
+		$Particles/GPUParticles2D/GPUParticles2D.emitting = emit_particle
+		$Particles/GPUParticles2D/GPUParticles2D/GPUParticles2D.emitting = emit_particle
+		$Particles/GPUParticles2D/GPUParticles2D/GPUParticles2D/GPUParticles2D.emitting = emit_particle
+	else:
+		var emit_particle = false
+		$Particles/GPUParticles2D.emitting = emit_particle
+		$Particles/GPUParticles2D/GPUParticles2D.emitting = emit_particle
+		$Particles/GPUParticles2D/GPUParticles2D/GPUParticles2D.emitting = emit_particle
+		$Particles/GPUParticles2D/GPUParticles2D/GPUParticles2D/GPUParticles2D.emitting = emit_particle
 	
 	if forward_back != 0 or left_right != 0:
 		fuel -= delta * fuel_rate 
@@ -55,8 +66,12 @@ func handel_refuel(delta):
 		if fuel < 100 and Globals.money > 0:
 			fuel += fuel_refule_rate * delta * 10
 			Globals.money -= delta * 10
+			$AudioListener2D/refuel.playing = true
 		elif fuel > 100:
 			fuel = 100
+			$AudioListener2D/refuel.playing = false
+		else:
+			$AudioListener2D/refuel.playing = false
 		if Input.is_action_just_pressed("refuel"):
 			Signal_Bus.emit_signal("fuel_start")
 	elif Input.is_action_just_released("refuel"):
@@ -71,7 +86,8 @@ func handel_pickup():
 				hold_box(in_pickup_range[randi_range(0, len(in_pickup_range)-1)])
 			else: hold_box(in_pickup_range[0])
 		elif is_holding==true:
-			release_box(holing)
+			if holing.can_drop():
+				release_box(holing)
 
 func hold_box(_box_node):
 	is_holding = true
