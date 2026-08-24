@@ -77,6 +77,7 @@ func handel_refuel(delta):
 	elif Input.is_action_just_released("refuel"):
 		Signal_Bus.emit_signal("fuel_end")
 
+
 func handel_pickup():
 	if Input.is_action_just_pressed("pickup"):
 		if is_holding==false:

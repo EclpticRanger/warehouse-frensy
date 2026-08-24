@@ -27,17 +27,17 @@ func _ready() -> void:
 	$"Shop menu".hide()
 	$"in game ui".show()
 	$"Shop menu/Shop".show()
-	$"Shop menu/Shop/GridContainer/Control/ColorRect".texture = Globals.Box_db.Box_list.get(1).texture
-	$"Shop menu/Shop/GridContainer/Control/Label".text = Globals.Box_db.Box_list.get(1).name
-	$"Shop menu/Shop/GridContainer/Control/Label2".text = "Price: " + str(Globals.Box_db.Box_list.get(1).price)
+	$"Shop menu/Shop/GridContainer/Control/ColorRect".texture = Globals.Box_db.Box_list.get(0).texture
+	$"Shop menu/Shop/GridContainer/Control/Label".text = Globals.Box_db.Box_list.get(0).name
+	$"Shop menu/Shop/GridContainer/Control/Label2".text = "Price: " + str(Globals.Box_db.Box_list.get(0).price)
 	
-	$"Shop menu/Shop/GridContainer/Control2/ColorRect".texture = Globals.Box_db.Box_list.get(2).texture
-	$"Shop menu/Shop/GridContainer/Control2/Label".text = Globals.Box_db.Box_list.get(2).name
-	$"Shop menu/Shop/GridContainer/Control2/Label2".text = "Price: " + str(Globals.Box_db.Box_list.get(2).price)
+	$"Shop menu/Shop/GridContainer/Control2/ColorRect".texture = Globals.Box_db.Box_list.get(1).texture
+	$"Shop menu/Shop/GridContainer/Control2/Label".text = Globals.Box_db.Box_list.get(1).name
+	$"Shop menu/Shop/GridContainer/Control2/Label2".text = "Price: " + str(Globals.Box_db.Box_list.get(1).price)
 	
-	$"Shop menu/Shop/GridContainer/Control3/ColorRect".texture = Globals.Box_db.Box_list.get(3).texture
-	$"Shop menu/Shop/GridContainer/Control3/Label".text = Globals.Box_db.Box_list.get(3).name
-	$"Shop menu/Shop/GridContainer/Control3/Label2".text = "Price: " + str(Globals.Box_db.Box_list.get(3).price)
+	$"Shop menu/Shop/GridContainer/Control3/ColorRect".texture = Globals.Box_db.Box_list.get(2).texture
+	$"Shop menu/Shop/GridContainer/Control3/Label".text = Globals.Box_db.Box_list.get(2).name
+	$"Shop menu/Shop/GridContainer/Control3/Label2".text = "Price: " + str(Globals.Box_db.Box_list.get(2).price)
 	
 	if Globals.tutoral:
 		$"in game ui/Fuel Tank".hide()
@@ -47,6 +47,10 @@ func _ready() -> void:
 	
 
 func _process(_delta: float) -> void:
+	
+	for order : Order in Globals.active_orders:
+		pass
+	
 	
 	#In Game UI
 	if $"in game ui".visible:
@@ -82,13 +86,15 @@ func _process(_delta: float) -> void:
 						child.queue_free()
 					i += 1
 			i = 0
-			for order in Globals.active_orders:
-				for ids in order:
+			for order : Order in Globals.active_orders:
+				var order_quantitys_fixed = order.quantitys
+				for k in range(order.quantitys.size()):
+					if order_quantitys_fixed[k] == 0: continue
 					var add_child_path = get_node("Shop menu/Orders/ScrollContainer/HBoxContainer/" + str(i + 1) + "/VBoxContainer/VBoxContainer")
 					var item = load("res://Player/UI/ORDER SECTION.tscn")
 					item = item.instantiate()
-					item.get_node("ColorRect").texture = Globals.Box_db.Box_list.get(ids).texture
-					item.get_node("Label").text = Globals.Box_db.Box_list.get(ids).name + ": " + str(Globals.active_orders[i][ids])
+					item.get_node("ColorRect").texture = Globals.Box_db.Box_list.get(k).texture
+					item.get_node("Label").text = Globals.Box_db.Box_list.get(k).name + ": " + str(order_quantitys_fixed[k])
 					add_child_path.add_child(item)
 				i += 1
 			

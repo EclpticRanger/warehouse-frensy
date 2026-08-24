@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbtwn6w0hkjte"
-path="res://.godot/imported/Load immage.png-7937e5537171b2579ac909536d7842d7.ctex"
+uid="uid://d0htc8jtofxkm"
+path="res://.godot/imported/Warehouse Frenzy.png-7d35848a9044f4033622b3a4e79c9c45.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Load immage.png"
-dest_files=["res://.godot/imported/Load immage.png-7937e5537171b2579ac909536d7842d7.ctex"]
+source_file="res://Warehouse Frenzy.png"
+dest_files=["res://.godot/imported/Warehouse Frenzy.png-7d35848a9044f4033622b3a4e79c9c45.ctex"]
 
 [params]
 

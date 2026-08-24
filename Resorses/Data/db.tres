@@ -6,11 +6,8 @@
 [ext_resource type="Resource" uid="uid://b4kkjqfeag6pj" path="res://Resorses/Data/2.tres" id="3_e5ga5"]
 [ext_resource type="Resource" uid="uid://d1y0ilcanxw6h" path="res://Resorses/Data/3.tres" id="4_nu8kv"]
 
-[sub_resource type="Resource" id="Resource_2mkxh"]
-script = ExtResource("1_qosxn")
-metadata/_custom_type_script = "uid://coixq670i6g65"
-
 [resource]
 script = ExtResource("2_0seds")
-Box_list = Array[ExtResource("1_qosxn")]([SubResource("Resource_2mkxh"), ExtResource("2_68bra"), ExtResource("3_e5ga5"), ExtResource("4_nu8kv")])
+amount = 3
+Box_list = Array[ExtResource("1_qosxn")]([ExtResource("2_68bra"), ExtResource("3_e5ga5"), ExtResource("4_nu8kv")])
 metadata/_custom_type_script = "uid://bigq4i2yg4ic6"

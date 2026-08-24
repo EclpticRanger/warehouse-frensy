@@ -203,6 +203,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Shop menu" type="TabContainer" parent="UI/UI" unique_id=373749763]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

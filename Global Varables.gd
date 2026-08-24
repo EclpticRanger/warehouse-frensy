@@ -1,5 +1,7 @@
 extends Node
 
+
+
 var Box_db: box_database = load("res://Resorses/Data/db.tres")
 var player : CharacterBody2D
 
@@ -37,10 +39,12 @@ var order3_timer: float = -1
 var order4_timer: float = -1
 var order5_timer: float = -1
 
+
 func _ready() -> void:
 	for i in range(Box_db.Box_list.size()):
 		total_weight += Box_db.Box_list.get(i).weight
 		weights.append(Box_db.Box_list.get(i).weight)
+	
 
 func reset_values():
 	score = 0
@@ -52,18 +56,19 @@ func reset_values():
 	reputation = 0
 
 func clear_fuffled_order():
-	for order in active_orders:
-		for id in order:
-			if order[id] <= 0:
-				order.erase(id)
-		if order == {}:
+	for order : Order in active_orders:
+		for id in order.quantitys:
+			if order.quantitys[id] <= 0:
+				order.quantitys.erase(id)
+		if order.quantitys == {}:
 			active_orders.erase(order)
 			reputation += 30
+		
 
 func remove_box_from_orders(id: int):
-	for order in active_orders:
-		if id in order:
-			order[id] -= 1
+	for order : Order in active_orders:
+		if not order.quantitys[id] == 0:
+			order.quantitys[id] -= 1
 			break
 	clear_fuffled_order()
 
@@ -81,28 +86,31 @@ func start():
 func new_order():
 	if len(active_orders) >= 5:
 		return
-	var order: Dictionary[int, int]
-	var max_mass: int = defult_mass * score_scale_multaplyer * diffculty_mutiplyer
+	var order: Order = Order.new()
+	var max_mass: int = defult_mass * diffculty_mutiplyer
 	var mass = 0
 	while true:
 		if mass >= max_mass:
 			break
-		var id_chosen = find_found_weight(randi_range(1, total_weight), weights) -1
+		var id_chosen = find_found_weight(randi_range(1, total_weight), weights) 
 
-		if id_chosen in order:
-			order[id_chosen] += 1
-		else: order[id_chosen] = 1
+		if id_chosen in order.quantitys:
+			order.quantitys[id_chosen] += 1
+		else: order.quantitys[id_chosen] = 1
 		mass += Box_db.Box_list.get(id_chosen).price
-	
-	Signal_Bus.new_order.emit(len(active_orders) + 1)
+		
+	print("final order " + str(order.quantitys))
 	active_orders.append(order)
-
+	Signal_Bus.new_order.emit(len(active_orders))
+	print(order.quantitys)
+	
 func find_found_weight(random_number: int, box_weights: Array):
 	var total: int = 0
 	for i in range(len(box_weights)):
 		total += box_weights[i]
-		if total >= random_number:
-			return i + 1
+		print(str(total) + " " + str(random_number) + " " + str(i))
+		if random_number <= total:
+			return i
 
 func order_timeout(id : int):
 	reputation -= 40
