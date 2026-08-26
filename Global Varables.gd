@@ -33,12 +33,6 @@ var masses = []
 var weights = []
 var reputation : float = 0
 
-var order1_timer: float = -1
-var order2_timer: float = -1
-var order3_timer: float = -1
-var order4_timer: float = -1
-var order5_timer: float = -1
-
 
 func _ready() -> void:
 	for i in range(Box_db.Box_list.size()):
@@ -56,7 +50,7 @@ func reset_values():
 	reputation = 0
 
 func clear_fuffled_order():
-	for order : Order in active_orders:
+	for order in Globals.active_orders:
 		for id in order.quantitys:
 			if order.quantitys[id] <= 0:
 				order.quantitys.erase(id)
@@ -67,9 +61,9 @@ func clear_fuffled_order():
 
 func remove_box_from_orders(id: int):
 	for order : Order in active_orders:
-		if not order.quantitys[id] == 0:
-			order.quantitys[id] -= 1
-			break
+		if id in order.quantitys:
+			if not order.quantitys[id] == 0:
+				order.quantitys[id] -= 1
 	clear_fuffled_order()
 
 func start():
@@ -98,21 +92,19 @@ func new_order():
 			order.quantitys[id_chosen] += 1
 		else: order.quantitys[id_chosen] = 1
 		mass += Box_db.Box_list.get(id_chosen).price
-		
+	
 	print("final order " + str(order.quantitys))
+	order.id = len(active_orders) + 1
 	active_orders.append(order)
 	Signal_Bus.new_order.emit(len(active_orders))
-	print(order.quantitys)
 	
 func find_found_weight(random_number: int, box_weights: Array):
 	var total: int = 0
 	for i in range(len(box_weights)):
 		total += box_weights[i]
-		print(str(total) + " " + str(random_number) + " " + str(i))
 		if random_number <= total:
 			return i
 
 func order_timeout(id : int):
 	reputation -= 40
-	active_orders[id-1] = {}
-	clear_fuffled_order()
+	active_orders.remove_at(id)

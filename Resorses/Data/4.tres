@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BoxData" format=3 uid="uid://c85glcbyvea3w"]
+
+[ext_resource type="Script" uid="uid://coixq670i6g65" path="res://Resorses/BoxData.gd" id="1_g0bg4"]
+[ext_resource type="Texture2D" uid="uid://bf6c4g044dsbv" path="res://Assets/Art/Level Assets/Food/box4.png" id="2_gogl4"]
+
+[resource]
+script = ExtResource("1_g0bg4")
+id = 4
+name = "Void Mushroom"
+texture = ExtResource("2_gogl4")
+price = 35
+weight = 40
+sell_price = 70
+spawn_timer = 20.0
+metadata/_custom_type_script = "uid://coixq670i6g65"

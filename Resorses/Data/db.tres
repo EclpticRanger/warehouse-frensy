@@ -5,9 +5,10 @@
 [ext_resource type="Resource" uid="uid://cmbdbel718e6r" path="res://Resorses/Data/1.tres" id="2_68bra"]
 [ext_resource type="Resource" uid="uid://b4kkjqfeag6pj" path="res://Resorses/Data/2.tres" id="3_e5ga5"]
 [ext_resource type="Resource" uid="uid://d1y0ilcanxw6h" path="res://Resorses/Data/3.tres" id="4_nu8kv"]
+[ext_resource type="Resource" uid="uid://c85glcbyvea3w" path="res://Resorses/Data/4.tres" id="5_e5ga5"]
 
 [resource]
 script = ExtResource("2_0seds")
 amount = 3
-Box_list = Array[ExtResource("1_qosxn")]([ExtResource("2_68bra"), ExtResource("3_e5ga5"), ExtResource("4_nu8kv")])
+Box_list = Array[ExtResource("1_qosxn")]([ExtResource("2_68bra"), ExtResource("3_e5ga5"), ExtResource("4_nu8kv"), ExtResource("5_e5ga5")])
 metadata/_custom_type_script = "uid://bigq4i2yg4ic6"

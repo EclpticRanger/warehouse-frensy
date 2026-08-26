@@ -17,6 +17,7 @@ var Deleverys_h_box: HBoxContainer = HBoxContainer.new()
 @onready var score = score_nodepath
 
 var Delivering_items = []
+var j = 0
 
 func _ready() -> void:
 	Deleverys_h_box.set_anchors_preset(Control.PRESET_FULL_RECT)
@@ -27,29 +28,23 @@ func _ready() -> void:
 	$"Shop menu".hide()
 	$"in game ui".show()
 	$"Shop menu/Shop".show()
-	$"Shop menu/Shop/GridContainer/Control/ColorRect".texture = Globals.Box_db.Box_list.get(0).texture
-	$"Shop menu/Shop/GridContainer/Control/Label".text = Globals.Box_db.Box_list.get(0).name
-	$"Shop menu/Shop/GridContainer/Control/Label2".text = "Price: " + str(Globals.Box_db.Box_list.get(0).price)
 	
-	$"Shop menu/Shop/GridContainer/Control2/ColorRect".texture = Globals.Box_db.Box_list.get(1).texture
-	$"Shop menu/Shop/GridContainer/Control2/Label".text = Globals.Box_db.Box_list.get(1).name
-	$"Shop menu/Shop/GridContainer/Control2/Label2".text = "Price: " + str(Globals.Box_db.Box_list.get(1).price)
-	
-	$"Shop menu/Shop/GridContainer/Control3/ColorRect".texture = Globals.Box_db.Box_list.get(2).texture
-	$"Shop menu/Shop/GridContainer/Control3/Label".text = Globals.Box_db.Box_list.get(2).name
-	$"Shop menu/Shop/GridContainer/Control3/Label2".text = "Price: " + str(Globals.Box_db.Box_list.get(2).price)
+	for i in range(Globals.Box_db.Box_list.size()):
+		get_node("Shop menu/Shop/GridContainer/Control" + str(i + 1) + "/ColorRect").texture = Globals.Box_db.Box_list.get(i).texture
+		get_node("Shop menu/Shop/GridContainer/Control" + str(i + 1) + "/Label").text = Globals.Box_db.Box_list.get(i).name
+		get_node("Shop menu/Shop/GridContainer/Control" + str(i + 1) + "/Label2").text = "Price: " + str(Globals.Box_db.Box_list.get(i).price)
+		get_node("Shop menu/Shop/GridContainer/Control" + str(i + 1) + "/Label3").text = "Sell Price: " + str(Globals.Box_db.Box_list.get(i).sell_price)
 	
 	if Globals.tutoral:
 		$"in game ui/Fuel Tank".hide()
 		$"in game ui/Money".hide()
 		$"in game ui/Score".hide()
 		$"in game ui/Sprite2D".hide()
-	
+
+func _physics_process(delta: float) -> void:
+	j += 1
 
 func _process(_delta: float) -> void:
-	
-	for order : Order in Globals.active_orders:
-		pass
 	
 	
 	#In Game UI
@@ -79,30 +74,45 @@ func _process(_delta: float) -> void:
 		
 		#Orders Menu
 		if $"Shop menu/Orders".visible:
-			var i = 1
-			for orderID in $"Shop menu/Orders/ScrollContainer/HBoxContainer".get_children():
-				if get_node("Shop menu/Orders/ScrollContainer/HBoxContainer/%s/VBoxContainer/VBoxContainer" % i):
-					for child in get_node("Shop menu/Orders/ScrollContainer/HBoxContainer/%s/VBoxContainer/VBoxContainer" % i).get_children():
-						child.queue_free()
-					i += 1
-			i = 0
-			for order : Order in Globals.active_orders:
-				var order_quantitys_fixed = order.quantitys
-				for k in range(order.quantitys.size()):
-					if order_quantitys_fixed[k] == 0: continue
-					var add_child_path = get_node("Shop menu/Orders/ScrollContainer/HBoxContainer/" + str(i + 1) + "/VBoxContainer/VBoxContainer")
-					var item = load("res://Player/UI/ORDER SECTION.tscn")
-					item = item.instantiate()
-					item.get_node("ColorRect").texture = Globals.Box_db.Box_list.get(k).texture
-					item.get_node("Label").text = Globals.Box_db.Box_list.get(k).name + ": " + str(order_quantitys_fixed[k])
-					add_child_path.add_child(item)
-				i += 1
 			
-			$"Shop menu/Orders/ScrollContainer/HBoxContainer/1/VBoxContainer/time".text = str(int(Globals.order1_timer))
-			$"Shop menu/Orders/ScrollContainer/HBoxContainer/2/VBoxContainer/time".text = str(int(Globals.order2_timer))
-			$"Shop menu/Orders/ScrollContainer/HBoxContainer/3/VBoxContainer/time".text = str(int(Globals.order3_timer))
-			$"Shop menu/Orders/ScrollContainer/HBoxContainer/4/VBoxContainer/time".text = str(int(Globals.order4_timer))
-			$"Shop menu/Orders/ScrollContainer/HBoxContainer/5/VBoxContainer/time".text = str(int(Globals.order5_timer))
+			if j % 20 == 0:
+				rebuild_orders_ui()
+			
+			var index = 0
+			for order: Order in Globals.active_orders:
+				# Use index + 1 instead of order.id + 1 to match how they were built in the UI
+				var time_label = get_node_or_null("Shop menu/Orders/ScrollContainer/HBoxContainer/" + str(index + 1) + "/VBoxContainer/time")
+				if time_label != null:
+					time_label.text = str(int(order.timer))
+				index += 1
+			
+func rebuild_orders_ui():
+	var i = 1
+	# Clear out the old UI
+	for order_node in $"Shop menu/Orders/ScrollContainer/HBoxContainer".get_children():
+		var item_container = get_node_or_null("Shop menu/Orders/ScrollContainer/HBoxContainer/%s/VBoxContainer/VBoxContainer" % i)
+		if item_container:
+			for child in item_container.get_children():
+				child.queue_free()
+		i += 1
+		
+	# Rebuild the UI based on active orders
+	i = 0
+	for order: Order in Globals.active_orders:
+		var sorted_quantity_keys = order.quantitys.keys()
+		sorted_quantity_keys.sort() 
+		
+		for key in sorted_quantity_keys:
+			var value = order.quantitys[key]
+			if value == 0: continue
+			
+			var add_child_path = get_node("Shop menu/Orders/ScrollContainer/HBoxContainer/" + str(i + 1) + "/VBoxContainer/VBoxContainer")
+			var item = load("res://Player/UI/ORDER SECTION.tscn").instantiate()
+			
+			item.get_node("ColorRect").texture = Globals.Box_db.Box_list.get(key).texture
+			item.get_node("Label").text = Globals.Box_db.Box_list.get(key).name + ": " + str(value)
+			add_child_path.add_child(item)
+		i += 1
 
 func on_fuel_changed(fuel):
 	fuel_tank_bar.value = fuel[0]
@@ -117,7 +127,7 @@ func check_box_purchis(id: int):
 
 func _on__pressed(button: int) -> void:
 	if check_box_purchis(button):
-		Signal_Bus.emit_signal("spawn_box", button)
+		Signal_Bus.emit_signal("spawn_box", button - 1)
 		Globals.food_purchsed += 1
 
 func on_box_spawned(id: int):

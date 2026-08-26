@@ -110,3 +110,7 @@ func _on_body_enter_pickup_area(body: Node2D) -> void:
 func _on_body_exit_pickup_area(body: Node2D) -> void:
 	if body in in_pickup_range:
 		in_pickup_range.erase(body)
+
+
+func _on__pressed(extra_arg_0: int) -> void:
+	pass # Replace with function body.
