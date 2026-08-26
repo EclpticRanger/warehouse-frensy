@@ -216,11 +216,12 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 20
 tab_alignment = 1
-current_tab = 0
+current_tab = 1
 tab_2/hidden = true
 tab_3/hidden = true
 
 [node name="Shop" type="Control" parent="UI/UI/Shop menu" unique_id=1411828118]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -401,7 +402,6 @@ theme = ExtResource("5_8g4oa")
 text = "Buy"
 
 [node name="Orders" type="Control" parent="UI/UI/Shop menu" unique_id=1739860519]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 

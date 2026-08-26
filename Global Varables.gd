@@ -3,6 +3,7 @@ extends Node
 
 
 var Box_db: box_database = load("res://Resorses/Data/db.tres")
+var db_order_name : Order_names = load("res://Resorses/Data/names.tres")
 var player : CharacterBody2D
 
 var score : int = 0
@@ -93,8 +94,15 @@ func new_order():
 		else: order.quantitys[id_chosen] = 1
 		mass += Box_db.Box_list.get(id_chosen).price
 	
-	print("final order " + str(order.quantitys))
 	order.id = len(active_orders) + 1
+	
+	var prefix = db_order_name.Prefixes[randi_range(0, db_order_name.Prefixes.size() - 1)]
+	var affex = db_order_name.Affexes[randi_range(0, db_order_name.Affexes.size() - 1)]
+	var suffex = db_order_name.Suffexes[randi_range(0, db_order_name.Suffexes.size() - 1)]
+	order.name = prefix + " " + affex + " " + suffex
+	order.timeperiod = db_order_name.time_period[randi_range(0, db_order_name.time_period.size() - 1)]
+	
+	print("final order " + str(order.quantitys) + ", Name: " + order.name + ", Time Period: " + order.timeperiod)
 	active_orders.append(order)
 	Signal_Bus.new_order.emit(len(active_orders))
 	

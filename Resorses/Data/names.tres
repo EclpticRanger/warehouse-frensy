@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Order_names" format=3 uid="uid://da8lvvp8e7h8d"]
+
+[ext_resource type="Script" uid="uid://dyi5u2xn1i7i0" path="res://Resorses/order_names.gd" id="1_n82t1"]
+
+[resource]
+script = ExtResource("1_n82t1")
+Prefixes = Array[String](["Zorg's", "Prime", "Oort's", "Centauri", "Nova", "Xylar's", "Vortex", "Cosmo's", "Zenith", "Titan's", "Galax", "Helix", "Orion's", "Cygnus", "Hyper", "Quantum", "Meteor", "Solaris", "Eclipse", "Aero's"])
+Affexes = Array[String](["Nebula", "Quasar", "Void", "Pulsar", "Astral", "Wormhole", "Supernova", "Meteorite", "Galaxy", "Asteroid"])
+Suffexes = Array[String](["Mart", "Emporium", "Provisions", "Super-Hive", "Bazaar"])
+time_period = Array[String](["Daily Order", "Weekly Order", "Quick Restock", "Medium Restock", "Spsific Restock"])
+metadata/_custom_type_script = "uid://dyi5u2xn1i7i0"

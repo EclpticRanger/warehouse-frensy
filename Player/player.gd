@@ -112,5 +112,5 @@ func _on_body_exit_pickup_area(body: Node2D) -> void:
 		in_pickup_range.erase(body)
 
 
-func _on__pressed(extra_arg_0: int) -> void:
+func _on__pressed(_extra_arg_0: int) -> void:
 	pass # Replace with function body.

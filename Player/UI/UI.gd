@@ -41,7 +41,7 @@ func _ready() -> void:
 		$"in game ui/Score".hide()
 		$"in game ui/Sprite2D".hide()
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	j += 1
 
 func _process(_delta: float) -> void:
@@ -130,7 +130,7 @@ func _on__pressed(button: int) -> void:
 		Signal_Bus.emit_signal("spawn_box", button - 1)
 		Globals.food_purchsed += 1
 
-func on_box_spawned(id: int):
+func on_box_spawned(_id: int):
 	pass
 	#this will be used for the Dellivering menu
 
