@@ -10,4 +10,5 @@ border_color = Color(0.13725491, 0.13725491, 0.13725491, 0.93333334)
 corner_detail = 12
 
 [resource]
+Label/fonts/font = null
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_abrne")

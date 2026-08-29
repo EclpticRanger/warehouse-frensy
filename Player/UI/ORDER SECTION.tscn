@@ -2,8 +2,12 @@
 
 [ext_resource type="Theme" uid="uid://b8lg4cd08m63h" path="res://Theme.tres" id="1_134b3"]
 [ext_resource type="Texture2D" uid="uid://r7my86f4toiv" path="res://icon.svg" id="2_j1ynf"]
+[ext_resource type="FontFile" uid="uid://chl73gvbmp53o" path="res://Sterion-BLLld.ttf" id="3_j1ynf"]
 
 [node name="ID" type="VBoxContainer" unique_id=448312198]
+custom_minimum_size = Vector2(200, 0)
+offset_right = 104.0
+offset_bottom = 212.0
 
 [node name="ColorRect" type="TextureRect" parent="." unique_id=351476281]
 texture_filter = 1
@@ -13,7 +17,11 @@ texture = ExtResource("2_j1ynf")
 expand_mode = 4
 
 [node name="Label" type="Label" parent="." unique_id=828434804]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme = ExtResource("1_134b3")
+theme_override_fonts/font = ExtResource("3_j1ynf")
+theme_override_font_sizes/font_size = 14
 text = "Goo Type: 1"
 horizontal_alignment = 1
+autowrap_mode = 3

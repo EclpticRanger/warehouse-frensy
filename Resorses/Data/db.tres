@@ -6,9 +6,11 @@
 [ext_resource type="Resource" uid="uid://b4kkjqfeag6pj" path="res://Resorses/Data/2.tres" id="3_e5ga5"]
 [ext_resource type="Resource" uid="uid://d1y0ilcanxw6h" path="res://Resorses/Data/3.tres" id="4_nu8kv"]
 [ext_resource type="Resource" uid="uid://c85glcbyvea3w" path="res://Resorses/Data/4.tres" id="5_e5ga5"]
+[ext_resource type="Resource" uid="uid://d5xcx5eqtvw0" path="res://Resorses/Data/5.tres" id="6_2mkxh"]
+[ext_resource type="Resource" uid="uid://drc8rv0we4oeu" path="res://Resorses/Data/6.tres" id="7_icb1u"]
 
 [resource]
 script = ExtResource("2_0seds")
-amount = 3
-Box_list = Array[ExtResource("1_qosxn")]([ExtResource("2_68bra"), ExtResource("3_e5ga5"), ExtResource("4_nu8kv"), ExtResource("5_e5ga5")])
+amount = 6
+Box_list = Array[ExtResource("1_qosxn")]([ExtResource("2_68bra"), ExtResource("3_e5ga5"), ExtResource("4_nu8kv"), ExtResource("5_e5ga5"), ExtResource("6_2mkxh"), ExtResource("7_icb1u")])
 metadata/_custom_type_script = "uid://bigq4i2yg4ic6"

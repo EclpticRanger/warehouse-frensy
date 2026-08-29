@@ -11,24 +11,14 @@ var in_pickup_range: Array = []
 
 var holing
 
-@onready var UI_Control_Node = $UI/UI
-@onready var in_game_ui = $"UI/UI/in game ui"
-@onready var shop_ui = $"UI/UI/Shop menu"
-
 func _enter_tree() -> void:
 	Globals.player = self
 
 func _ready() -> void:
 	pass
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	Signal_Bus.emit_signal("change_fuel", [fuel])
-	if Input.is_action_just_pressed("menu") or Input.is_action_just_pressed("ui_cancel"):
-		var can_menu: bool = (Globals.tutoral_level in [0])
-		if can_menu:
-			in_game_ui.visible = not in_game_ui.visible 
-			shop_ui.visible = not shop_ui.visible
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
@@ -110,7 +100,3 @@ func _on_body_enter_pickup_area(body: Node2D) -> void:
 func _on_body_exit_pickup_area(body: Node2D) -> void:
 	if body in in_pickup_range:
 		in_pickup_range.erase(body)
-
-
-func _on__pressed(_extra_arg_0: int) -> void:
-	pass # Replace with function body.

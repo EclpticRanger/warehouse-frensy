@@ -6,6 +6,6 @@
 script = ExtResource("1_n82t1")
 Prefixes = Array[String](["Zorg's", "Prime", "Oort's", "Centauri", "Nova", "Xylar's", "Vortex", "Cosmo's", "Zenith", "Titan's", "Galax", "Helix", "Orion's", "Cygnus", "Hyper", "Quantum", "Meteor", "Solaris", "Eclipse", "Aero's"])
 Affexes = Array[String](["Nebula", "Quasar", "Void", "Pulsar", "Astral", "Wormhole", "Supernova", "Meteorite", "Galaxy", "Asteroid"])
-Suffexes = Array[String](["Mart", "Emporium", "Provisions", "Super-Hive", "Bazaar"])
+Suffexes = Array[String](["Mart", "Emporium", "Provisions", "Super Hive", "Bazaar"])
 time_period = Array[String](["Daily Order", "Weekly Order", "Quick Restock", "Medium Restock", "Spsific Restock"])
 metadata/_custom_type_script = "uid://dyi5u2xn1i7i0"

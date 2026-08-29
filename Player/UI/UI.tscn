@@ -1,0 +1,711 @@
+[gd_scene format=3 uid="uid://ckj5b01yvwy8b"]
+
+[ext_resource type="Script" uid="uid://c8o6w6riujg8f" path="res://Player/UI/UI.gd" id="1_jqn02"]
+[ext_resource type="Texture2D" uid="uid://csa43mkhop4kn" path="res://Assets/Art/Player/UI/Fuel Tank.png" id="2_foiwe"]
+[ext_resource type="FontFile" uid="uid://chl73gvbmp53o" path="res://Sterion-BLLld.ttf" id="3_3ujc7"]
+[ext_resource type="Texture2D" uid="uid://cvwvfgyhdytxs" path="res://Assets/Art/Player/UI/ui eliment thingi.png" id="4_5xurb"]
+[ext_resource type="Theme" uid="uid://b8lg4cd08m63h" path="res://Theme.tres" id="5_taqas"]
+[ext_resource type="Texture2D" uid="uid://blkk3t6pvfyev" path="res://Assets/Art/Level Assets/Food/Box 1.png" id="6_d5rvm"]
+[ext_resource type="Texture2D" uid="uid://dlu6xw3oj6hpb" path="res://Assets/Art/Level Assets/Food/box2.png" id="7_qo1pa"]
+[ext_resource type="Texture2D" uid="uid://qcrev7l8caqi" path="res://Assets/Art/Level Assets/Food/box3.png" id="8_40r0a"]
+[ext_resource type="Texture2D" uid="uid://bf6c4g044dsbv" path="res://Assets/Art/Level Assets/Food/box4.png" id="9_ly2lw"]
+[ext_resource type="Texture2D" uid="uid://bofsug4o0onpo" path="res://Assets/Art/Level Assets/Food/box5.png" id="10_3mirh"]
+[ext_resource type="Texture2D" uid="uid://s21x0unit4lm" path="res://Assets/Art/Level Assets/Food/box6.png" id="11_coxox"]
+[ext_resource type="PackedScene" uid="uid://dcaegblte3qw4" path="res://Player/UI/ORDER SECTION.tscn" id="12_0wyng"]
+
+[sub_resource type="Gradient" id="Gradient_ddoul"]
+colors = PackedColorArray(0, 0, 0, 1, 0.19913352, 0.19913352, 0.19913346, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8g4oa"]
+gradient = SubResource("Gradient_ddoul")
+
+[sub_resource type="Gradient" id="Gradient_6ysni"]
+colors = PackedColorArray(0.50357634, 0.037460934, 0.4932866, 1, 0.6001523, 0.0018507236, 0.7989992, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vlldt"]
+gradient = SubResource("Gradient_6ysni")
+
+[sub_resource type="Gradient" id="Gradient_v0k0e"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0, 1, 0, 0.7294118, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5wa8t"]
+gradient = SubResource("Gradient_v0k0e")
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_vlldt"]
+color = Color(1, 1, 1, 1)
+
+[node name="UI" type="CanvasLayer" unique_id=7451055]
+
+[node name="UI" type="Control" parent="." unique_id=1607295701 node_paths=PackedStringArray("fuel_tank_nodepath", "shop_menu_nodepath", "shop_menu_money_nodepath", "in_ui_nodepath", "score_nodepath", "money_nodepath")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_jqn02")
+fuel_tank_nodepath = NodePath("in game ui/Fuel Tank/TextureProgressBar")
+shop_menu_nodepath = NodePath("Shop menu")
+shop_menu_money_nodepath = NodePath("Shop menu/Shop/shop menu monney")
+in_ui_nodepath = NodePath("in game ui")
+score_nodepath = NodePath("in game ui/Score")
+money_nodepath = NodePath("in game ui/Money")
+
+[node name="in game ui" type="Control" parent="UI" unique_id=396613145]
+anchors_preset = 0
+
+[node name="Fuel Tank" type="Node2D" parent="UI/in game ui" unique_id=1276637245]
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/in game ui/Fuel Tank" unique_id=428874080]
+texture_filter = 1
+position = Vector2(52.000008, 559.00006)
+scale = Vector2(5, 5)
+texture = ExtResource("2_foiwe")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="UI/in game ui/Fuel Tank" unique_id=1540689835]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 42.0
+offset_top = 524.0
+offset_right = 62.0
+offset_bottom = 625.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+min_value = 1.0
+step = 0.01
+value = 100.0
+fill_mode = 3
+nine_patch_stretch = true
+texture_under = SubResource("GradientTexture1D_8g4oa")
+texture_progress = SubResource("GradientTexture1D_vlldt")
+
+[node name="Money" type="Label" parent="UI/in game ui" unique_id=1712987131]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 70.0
+offset_right = 121.0
+offset_bottom = 96.0
+theme_override_fonts/font = ExtResource("3_3ujc7")
+theme_override_font_sizes/font_size = 26
+text = "$200"
+
+[node name="Score" type="Label" parent="UI/in game ui" unique_id=292241640]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 15.0
+offset_right = 201.0
+offset_bottom = 41.0
+theme_override_fonts/font = ExtResource("3_3ujc7")
+theme_override_font_sizes/font_size = 26
+text = "Score 0"
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/in game ui" unique_id=1110370785]
+z_index = -1
+texture_filter = 1
+position = Vector2(168, 167)
+scale = Vector2(5.21875, 5.21875)
+texture = ExtResource("4_5xurb")
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="UI/in game ui" unique_id=1040784781]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 120.0
+offset_right = 173.0
+offset_bottom = 143.0
+theme_override_fonts/font = ExtResource("3_3ujc7")
+theme_override_font_sizes/font_size = 22
+text = "Reputation"
+
+[node name="Control" type="Control" parent="UI/in game ui" unique_id=754225024]
+anchors_preset = 0
+offset_left = 6.0
+offset_top = 156.0
+offset_right = 236.0
+offset_bottom = 172.0
+
+[node name="ColorRect" type="TextureRect" parent="UI/in game ui/Control" unique_id=2038032258]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.9, 1.01)
+texture = SubResource("GradientTexture1D_5wa8t")
+
+[node name="Maker" type="ColorRect" parent="UI/in game ui/Control" unique_id=1073215786]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+offset_right = -227.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Shop menu" type="TabContainer" parent="UI" unique_id=1719253468]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = 24.0
+offset_right = 1042.0
+offset_bottom = 548.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+tab_alignment = 1
+current_tab = 1
+
+[node name="Shop" type="Control" parent="UI/Shop menu" unique_id=1501996233]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="shop menu monney" type="Label" parent="UI/Shop menu/Shop" unique_id=237106556]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 10.0
+offset_right = 139.0
+offset_bottom = 65.0
+theme_override_font_sizes/font_size = 40
+text = "$200"
+
+[node name="GridContainer" type="GridContainer" parent="UI/Shop menu/Shop" unique_id=23208702]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 17.0
+offset_top = 65.0
+offset_right = -14.0
+offset_bottom = -21.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 40
+theme_override_constants/v_separation = 50
+columns = 6
+
+[node name="Control1" type="VBoxContainer" parent="UI/Shop menu/Shop/GridContainer" unique_id=735252588]
+layout_mode = 2
+
+[node name="ColorRect" type="TextureRect" parent="UI/Shop menu/Shop/GridContainer/Control1" unique_id=969898652]
+texture_filter = 1
+layout_mode = 2
+theme = ExtResource("5_taqas")
+texture = ExtResource("6_d5rvm")
+expand_mode = 4
+
+[node name="HSeparator" type="HSeparator" parent="UI/Shop menu/Shop/GridContainer/Control1" unique_id=587915967]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_vlldt")
+
+[node name="Label" type="Label" parent="UI/Shop menu/Shop/GridContainer/Control1" unique_id=399624238]
+layout_mode = 2
+theme = ExtResource("5_taqas")
+text = "Tenticle Juice"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="UI/Shop menu/Shop/GridContainer/Control1" unique_id=38449243]
+layout_mode = 2
+theme = ExtResource("5_taqas")
+text = "Price: 10"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="UI/Shop menu/Shop/GridContainer/Control1" unique_id=113255518]
+layout_mode = 2
+theme = ExtResource("5_taqas")
+text = "Sell Price: 20"
+horizontal_alignment = 1
+
+[node name="1" type="Button" parent="UI/Shop menu/Shop/GridContainer/Control1" unique_id=1217063506]
+layout_mode = 2
+theme = ExtResource("5_taqas")
+text = "Buy"
+
+[node name="Control2" type="VBoxContainer" parent="UI/Shop menu/Shop/GridContainer" unique_id=2000579300]
+layout_mode = 2
+
+[node name="ColorRect" type="TextureRect" parent="UI/Shop menu/Shop/GridContainer/Control2" unique_id=1881914676]
+texture_filter = 1
+layout_mode = 2
+theme = ExtResource("5_taqas")
+texture = ExtResource("7_qo1pa")
+expand_mode = 4
+
+[node name="HSeparator" type="HSeparator" parent="UI/Shop menu/Shop/GridContainer/Control2" unique_id=308857374]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_vlldt")
+
+[node name="Label" type="Label" parent="UI/Shop menu/Shop/GridContainer/Control2" unique_id=18710960]
+layout_mode = 2
+theme = ExtResource("5_taqas")
+text = "Redskin Lilishes"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="UI/Shop menu/Shop/GridContainer/Control2" unique_id=2134553860]
+layout_mode = 2
+theme = ExtResource("5_taqas")
+text = "Price: 15"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="UI/Shop menu/Shop/GridContainer/Control2" unique_id=599656896]
+layout_mode = 2
+theme = ExtResource("5_taqas")
+text = "Sell Price: 30"
+horizontal_alignment = 1
+
+[node name="2" type="Button" parent="UI/Shop menu/Shop/GridContainer/Control2" unique_id=773604499]
+layout_mode = 2
+theme = ExtResource("5_taqas")
+text = "Buy"
+
+[node name="Control3" type="VBoxContainer" parent="UI/Shop menu/Shop/GridContainer" unique_id=1584225916]
+layout_mode = 2
+
+[node name="ColorRect" type="TextureRect" parent="UI/Shop menu/Shop/GridContainer/Control3" unique_id=1519818515]
+texture_filter = 1
+layout_mode = 2
+theme = ExtResource("5_taqas")
+texture = ExtResource("8_40r0a")
+expand_mode = 4
+
+[node name="HSeparator" type="HSeparator" parent="UI/Shop menu/Shop/GridContainer/Control3" unique_id=1369159828]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_vlldt")
+
+[node name="Label" type="Label" parent="UI/Shop menu/Shop/GridContainer/Control3" unique_id=980013414]
+layout_mode = 2
+theme = ExtResource("5_taqas")
+text = "Alien Grass"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="UI/Shop menu/Shop/GridContainer/Control3" unique_id=2091611399]
+layout_mode = 2
+theme = ExtResource("5_taqas")
+text = "Price: 20"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="UI/Shop menu/Shop/GridContainer/Control3" unique_id=864778070]
+layout_mode = 2
+theme = ExtResource("5_taqas")
+text = "Sell Price: 40"
+horizontal_alignment = 1
+
+[node name="3" type="Button" parent="UI/Shop menu/Shop/GridContainer/Control3" unique_id=1015844343]
+layout_mode = 2
+theme = ExtResource("5_taqas")
+text = "Buy"
+
+[node name="Control4" type="VBoxContainer" parent="UI/Shop menu/Shop/GridContainer" unique_id=1930964284]
+layout_mode = 2
+
+[node name="ColorRect" type="TextureRect" parent="UI/Shop menu/Shop/GridContainer/Control4" unique_id=419885923]
+texture_filter = 1
+layout_mode = 2
+theme = ExtResource("5_taqas")
+texture = ExtResource("9_ly2lw")
+expand_mode = 4
+
+[node name="HSeparator" type="HSeparator" parent="UI/Shop menu/Shop/GridContainer/Control4" unique_id=1432600481]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_vlldt")
+
+[node name="Label" type="Label" parent="UI/Shop menu/Shop/GridContainer/Control4" unique_id=1894138772]
+layout_mode = 2
+theme = ExtResource("5_taqas")
+text = "Void Mushroom"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="UI/Shop menu/Shop/GridContainer/Control4" unique_id=1360373576]
+layout_mode = 2
+theme = ExtResource("5_taqas")
+text = "Price: 35"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="UI/Shop menu/Shop/GridContainer/Control4" unique_id=1655922764]
+layout_mode = 2
+theme = ExtResource("5_taqas")
+text = "Sell Price: 70"
+horizontal_alignment = 1
+
+[node name="4" type="Button" parent="UI/Shop menu/Shop/GridContainer/Control4" unique_id=309398113]
+layout_mode = 2
+theme = ExtResource("5_taqas")
+text = "Buy"
+
+[node name="Control5" type="VBoxContainer" parent="UI/Shop menu/Shop/GridContainer" unique_id=880579068]
+layout_mode = 2
+
+[node name="ColorRect" type="TextureRect" parent="UI/Shop menu/Shop/GridContainer/Control5" unique_id=1613575311]
+texture_filter = 1
+layout_mode = 2
+theme = ExtResource("5_taqas")
+texture = ExtResource("10_3mirh")
+expand_mode = 4
+
+[node name="HSeparator" type="HSeparator" parent="UI/Shop menu/Shop/GridContainer/Control5" unique_id=7861571]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_vlldt")
+
+[node name="Label" type="Label" parent="UI/Shop menu/Shop/GridContainer/Control5" unique_id=204338012]
+layout_mode = 2
+theme = ExtResource("5_taqas")
+text = "Varkarin Yokes"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="UI/Shop menu/Shop/GridContainer/Control5" unique_id=1206555021]
+layout_mode = 2
+theme = ExtResource("5_taqas")
+text = "Price: 50"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="UI/Shop menu/Shop/GridContainer/Control5" unique_id=206103704]
+layout_mode = 2
+theme = ExtResource("5_taqas")
+text = "Sell Price: 90"
+horizontal_alignment = 1
+
+[node name="4" type="Button" parent="UI/Shop menu/Shop/GridContainer/Control5" unique_id=245433287]
+layout_mode = 2
+theme = ExtResource("5_taqas")
+text = "Buy"
+
+[node name="Control6" type="VBoxContainer" parent="UI/Shop menu/Shop/GridContainer" unique_id=1903886567]
+layout_mode = 2
+
+[node name="ColorRect" type="TextureRect" parent="UI/Shop menu/Shop/GridContainer/Control6" unique_id=2027093818]
+texture_filter = 1
+layout_mode = 2
+theme = ExtResource("5_taqas")
+texture = ExtResource("11_coxox")
+expand_mode = 4
+
+[node name="HSeparator" type="HSeparator" parent="UI/Shop menu/Shop/GridContainer/Control6" unique_id=1159447498]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_vlldt")
+
+[node name="Label" type="Label" parent="UI/Shop menu/Shop/GridContainer/Control6" unique_id=2042373232]
+layout_mode = 2
+theme = ExtResource("5_taqas")
+text = "Starbrorn Cheese"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="UI/Shop menu/Shop/GridContainer/Control6" unique_id=1767077149]
+layout_mode = 2
+theme = ExtResource("5_taqas")
+text = "Price: 100"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="UI/Shop menu/Shop/GridContainer/Control6" unique_id=1206740072]
+layout_mode = 2
+theme = ExtResource("5_taqas")
+text = "Sell Price: 250"
+horizontal_alignment = 1
+
+[node name="4" type="Button" parent="UI/Shop menu/Shop/GridContainer/Control6" unique_id=2045155889]
+layout_mode = 2
+theme = ExtResource("5_taqas")
+text = "Buy"
+
+[node name="Orders" type="Control" parent="UI/Shop menu" unique_id=1802382626]
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="UI/Shop menu/Orders" unique_id=323282153]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/Shop menu/Orders/AspectRatioContainer" unique_id=1322918988]
+layout_mode = 2
+draw_focus_border = true
+horizontal_scroll_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Shop menu/Orders/AspectRatioContainer/ScrollContainer" unique_id=835225920]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 7
+alignment = 1
+
+[node name="1" type="MarginContainer" parent="UI/Shop menu/Orders/AspectRatioContainer/ScrollContainer/HBoxContainer" unique_id=1154363765]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Shop menu/Orders/AspectRatioContainer/ScrollContainer/HBoxContainer/1" unique_id=581823472]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="name" type="Label" parent="UI/Shop menu/Orders/AspectRatioContainer/ScrollContainer/HBoxContainer/1/VBoxContainer" unique_id=1241492791]
+custom_minimum_size = Vector2(120, 70)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_3ujc7")
+theme_override_font_sizes/font_size = 18
+text = "Vortex Pulsar Emporium"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="time_period" type="Label" parent="UI/Shop menu/Orders/AspectRatioContainer/ScrollContainer/HBoxContainer/1/VBoxContainer" unique_id=1460235785]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_3ujc7")
+theme_override_font_sizes/font_size = 10
+text = "Quick Restock"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="time" type="Label" parent="UI/Shop menu/Orders/AspectRatioContainer/ScrollContainer/HBoxContainer/1/VBoxContainer" unique_id=1048745177]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_3ujc7")
+text = "136"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Shop menu/Orders/AspectRatioContainer/ScrollContainer/HBoxContainer/1/VBoxContainer" unique_id=2130530940]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="_VBoxContainer_55" parent="UI/Shop menu/Orders/AspectRatioContainer/ScrollContainer/HBoxContainer/1/VBoxContainer/VBoxContainer" unique_id=448312198 instance=ExtResource("12_0wyng")]
+layout_mode = 2
+
+[node name="_VBoxContainer_56" parent="UI/Shop menu/Orders/AspectRatioContainer/ScrollContainer/HBoxContainer/1/VBoxContainer/VBoxContainer" unique_id=1313037855 instance=ExtResource("12_0wyng")]
+layout_mode = 2
+
+[node name="2" type="MarginContainer" parent="UI/Shop menu/Orders/AspectRatioContainer/ScrollContainer/HBoxContainer" unique_id=222243778]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Shop menu/Orders/AspectRatioContainer/ScrollContainer/HBoxContainer/2" unique_id=989212600]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="name" type="Label" parent="UI/Shop menu/Orders/AspectRatioContainer/ScrollContainer/HBoxContainer/2/VBoxContainer" unique_id=1264279111]
+custom_minimum_size = Vector2(120, 70)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_3ujc7")
+theme_override_font_sizes/font_size = 18
+text = "Shop Na"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="time_period" type="Label" parent="UI/Shop menu/Orders/AspectRatioContainer/ScrollContainer/HBoxContainer/2/VBoxContainer" unique_id=14335652]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_3ujc7")
+theme_override_font_sizes/font_size = 10
+text = "Weekly Order"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="time" type="Label" parent="UI/Shop menu/Orders/AspectRatioContainer/ScrollContainer/HBoxContainer/2/VBoxContainer" unique_id=2120627229]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_3ujc7")
+text = "0:0"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Shop menu/Orders/AspectRatioContainer/ScrollContainer/HBoxContainer/2/VBoxContainer" unique_id=687231236]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="3" type="MarginContainer" parent="UI/Shop menu/Orders/AspectRatioContainer/ScrollContainer/HBoxContainer" unique_id=1687014689]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Shop menu/Orders/AspectRatioContainer/ScrollContainer/HBoxContainer/3" unique_id=1527893272]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="name" type="Label" parent="UI/Shop menu/Orders/AspectRatioContainer/ScrollContainer/HBoxContainer/3/VBoxContainer" unique_id=371092591]
+custom_minimum_size = Vector2(120, 70)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_3ujc7")
+theme_override_font_sizes/font_size = 18
+text = "Shop Na"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="time_period" type="Label" parent="UI/Shop menu/Orders/AspectRatioContainer/ScrollContainer/HBoxContainer/3/VBoxContainer" unique_id=533516927]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_3ujc7")
+theme_override_font_sizes/font_size = 10
+text = "Weekly Order"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="time" type="Label" parent="UI/Shop menu/Orders/AspectRatioContainer/ScrollContainer/HBoxContainer/3/VBoxContainer" unique_id=353756008]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_3ujc7")
+text = "0:0"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Shop menu/Orders/AspectRatioContainer/ScrollContainer/HBoxContainer/3/VBoxContainer" unique_id=2042436897]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="4" type="MarginContainer" parent="UI/Shop menu/Orders/AspectRatioContainer/ScrollContainer/HBoxContainer" unique_id=874018749]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Shop menu/Orders/AspectRatioContainer/ScrollContainer/HBoxContainer/4" unique_id=1672636726]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="name" type="Label" parent="UI/Shop menu/Orders/AspectRatioContainer/ScrollContainer/HBoxContainer/4/VBoxContainer" unique_id=1300497283]
+custom_minimum_size = Vector2(120, 70)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_3ujc7")
+theme_override_font_sizes/font_size = 18
+text = "Shop Na"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="time_period" type="Label" parent="UI/Shop menu/Orders/AspectRatioContainer/ScrollContainer/HBoxContainer/4/VBoxContainer" unique_id=117555933]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_3ujc7")
+theme_override_font_sizes/font_size = 10
+text = "Weekly Order"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="time" type="Label" parent="UI/Shop menu/Orders/AspectRatioContainer/ScrollContainer/HBoxContainer/4/VBoxContainer" unique_id=1340024173]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_3ujc7")
+text = "0:0"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Shop menu/Orders/AspectRatioContainer/ScrollContainer/HBoxContainer/4/VBoxContainer" unique_id=453631434]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="5" type="MarginContainer" parent="UI/Shop menu/Orders/AspectRatioContainer/ScrollContainer/HBoxContainer" unique_id=1973525860]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Shop menu/Orders/AspectRatioContainer/ScrollContainer/HBoxContainer/5" unique_id=1673017929]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="name" type="Label" parent="UI/Shop menu/Orders/AspectRatioContainer/ScrollContainer/HBoxContainer/5/VBoxContainer" unique_id=1512980187]
+custom_minimum_size = Vector2(120, 70)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_3ujc7")
+theme_override_font_sizes/font_size = 18
+text = "Shop Na"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="time_period" type="Label" parent="UI/Shop menu/Orders/AspectRatioContainer/ScrollContainer/HBoxContainer/5/VBoxContainer" unique_id=5744314]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_3ujc7")
+theme_override_font_sizes/font_size = 10
+text = "Weekly Order"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="time" type="Label" parent="UI/Shop menu/Orders/AspectRatioContainer/ScrollContainer/HBoxContainer/5/VBoxContainer" unique_id=1653986012]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_3ujc7")
+text = "0:0"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Shop menu/Orders/AspectRatioContainer/ScrollContainer/HBoxContainer/5/VBoxContainer" unique_id=103086501]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Retire" type="Control" parent="UI/Shop menu" unique_id=992749260]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="UI/Shop menu/Retire" unique_id=281324035]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Shop menu/Retire/CenterContainer" unique_id=927690748]
+layout_mode = 2
+
+[node name="Money" type="Label" parent="UI/Shop menu/Retire/CenterContainer/VBoxContainer" unique_id=1883608106]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Money: 100"
+horizontal_alignment = 1
+
+[node name="Score" type="Label" parent="UI/Shop menu/Retire/CenterContainer/VBoxContainer" unique_id=1595625440]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Score: 0"
+horizontal_alignment = 1
+
+[node name="Active Orders" type="Label" parent="UI/Shop menu/Retire/CenterContainer/VBoxContainer" unique_id=897123576]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Active Orders: 0"
+horizontal_alignment = 1
+
+[node name="Orders Fullfuled" type="Label" parent="UI/Shop menu/Retire/CenterContainer/VBoxContainer" unique_id=166763841]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Orders Fullfuled: 0"
+horizontal_alignment = 1
+
+[node name="Food Purched" type="Label" parent="UI/Shop menu/Retire/CenterContainer/VBoxContainer" unique_id=880643010]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Food Purched: 0"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="UI/Shop menu/Retire/CenterContainer/VBoxContainer" unique_id=647095899]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Retire Run"
+
+[connection signal="tab_changed" from="UI/Shop menu" to="UI" method="_on_shop_menu_tab_changed"]
+[connection signal="pressed" from="UI/Shop menu/Shop/GridContainer/Control1/1" to="UI" method="_on__pressed" binds= [1]]
+[connection signal="pressed" from="UI/Shop menu/Shop/GridContainer/Control2/2" to="UI" method="_on__pressed" binds= [2]]
+[connection signal="pressed" from="UI/Shop menu/Shop/GridContainer/Control3/3" to="UI" method="_on__pressed" binds= [3]]
+[connection signal="pressed" from="UI/Shop menu/Shop/GridContainer/Control4/4" to="UI" method="_on__pressed" binds= [4]]
+[connection signal="pressed" from="UI/Shop menu/Shop/GridContainer/Control5/4" to="UI" method="_on__pressed" binds= [5]]
+[connection signal="pressed" from="UI/Shop menu/Shop/GridContainer/Control6/4" to="UI" method="_on__pressed" binds= [6]]
+[connection signal="pressed" from="UI/Shop menu/Retire/CenterContainer/VBoxContainer/Button" to="UI" method="_on_retire_button_preesed"]

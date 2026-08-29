@@ -23,7 +23,6 @@ func _ready() -> void:
 	Deleverys_h_box.set_anchors_preset(Control.PRESET_FULL_RECT)
 	
 	Signal_Bus.change_fuel.connect(on_fuel_changed)
-	Signal_Bus.box_spawned.connect(on_box_spawned)
 	
 	$"Shop menu".hide()
 	$"in game ui".show()
@@ -46,16 +45,23 @@ func _physics_process(_delta: float) -> void:
 
 func _process(_delta: float) -> void:
 	
+	if Input.is_action_just_pressed("menu") or Input.is_action_just_pressed("ui_cancel"):
+		var can_menu: bool = (Globals.tutoral_level in [0])
+		if can_menu:
+			in_game_ui.visible = not in_game_ui.visible 
+			shop_menu.visible = not shop_menu.visible
 	
+	if Globals.reputation >= 100:
+		Globals.reputation = 100
+	if Globals.reputation <= 0:
+		Globals.reputation = 0
+		
 	#In Game UI
 	if $"in game ui".visible:
 		money.text = "$" + str(int(round(Globals.money)))
 		score.text = "Score " + str(Globals.score)
 		$"in game ui/Control/Maker".set_position(Vector2(Globals.reputation * 2.273, -2))
-		if Globals.reputation >= 100:
-			Globals.reputation = 100
-		if Globals.reputation <= 0:
-			Globals.reputation = 0
+		
 	
 	#Shop Menu
 	elif $"Shop menu".visible:
@@ -77,11 +83,14 @@ func _process(_delta: float) -> void:
 			
 			if j % 20 == 0:
 				rebuild_orders_ui()
+			for child: MarginContainer in $"Shop menu/Orders/AspectRatioContainer/ScrollContainer/HBoxContainer".get_children():
+				child.hide()
 			
 			var index = 0
 			for order: Order in Globals.active_orders:
 				# Use index + 1 instead of order.id + 1 to match how they were built in the UI
-				var time_label = get_node_or_null("Shop menu/Orders/ScrollContainer/HBoxContainer/" + str(index + 1) + "/VBoxContainer/time")
+				get_node("Shop menu/Orders/AspectRatioContainer/ScrollContainer/HBoxContainer/" + str(index + 1)).show()
+				var time_label = get_node_or_null("Shop menu/Orders/AspectRatioContainer/ScrollContainer/HBoxContainer/" + str(index + 1) + "/VBoxContainer/time")
 				if time_label != null:
 					time_label.text = str(int(order.timer))
 				index += 1
@@ -89,12 +98,20 @@ func _process(_delta: float) -> void:
 func rebuild_orders_ui():
 	var i = 1
 	# Clear out the old UI
-	for order_node in $"Shop menu/Orders/ScrollContainer/HBoxContainer".get_children():
-		var item_container = get_node_or_null("Shop menu/Orders/ScrollContainer/HBoxContainer/%s/VBoxContainer/VBoxContainer" % i)
+	for order_node in $"Shop menu/Orders/AspectRatioContainer/ScrollContainer/HBoxContainer".get_children():
+		var item_container = get_node_or_null("Shop menu/Orders/AspectRatioContainer/ScrollContainer/HBoxContainer/%s/VBoxContainer/VBoxContainer" % i)
 		if item_container:
 			for child in item_container.get_children():
 				child.queue_free()
+		
+		var item_rout = get_node("Shop menu/Orders/AspectRatioContainer/ScrollContainer/HBoxContainer/" + str(i) + "/VBoxContainer")
+		if not i > len(Globals.active_orders):
+			var order : Order = Globals.active_orders[(i-1)]
+			item_rout.get_child(0).text = order.name
+			item_rout.get_child(1).text = order.timeperiod
 		i += 1
+		
+		
 		
 	# Rebuild the UI based on active orders
 	i = 0
@@ -106,7 +123,7 @@ func rebuild_orders_ui():
 			var value = order.quantitys[key]
 			if value == 0: continue
 			
-			var add_child_path = get_node("Shop menu/Orders/ScrollContainer/HBoxContainer/" + str(i + 1) + "/VBoxContainer/VBoxContainer")
+			var add_child_path = get_node("Shop menu/Orders/AspectRatioContainer/ScrollContainer/HBoxContainer/" + str(i + 1) + "/VBoxContainer/VBoxContainer")
 			var item = load("res://Player/UI/ORDER SECTION.tscn").instantiate()
 			
 			item.get_node("ColorRect").texture = Globals.Box_db.Box_list.get(key).texture
@@ -118,8 +135,8 @@ func on_fuel_changed(fuel):
 	fuel_tank_bar.value = fuel[0]
 
 func check_box_purchis(id: int):
-	if Globals.Box_db.Box_list.get(id).price <= Globals.money:
-		Globals.money -= Globals.Box_db.Box_list.get(id).price
+	if Globals.Box_db.Box_list.get(id-1).price <= Globals.money:
+		Globals.money -= Globals.Box_db.Box_list.get(id-1).price
 		return true
 	else: 
 		print("Out of money")
@@ -130,10 +147,11 @@ func _on__pressed(button: int) -> void:
 		Signal_Bus.emit_signal("spawn_box", button - 1)
 		Globals.food_purchsed += 1
 
-func on_box_spawned(_id: int):
-	pass
-	#this will be used for the Dellivering menu
-
 func _on_retire_button_preesed() -> void:
 	Globals.reset_values()
 	get_tree().change_scene_to_file("res://Main Menu/Main Menu.tscn")
+
+
+func _on_shop_menu_tab_changed(tab: int) -> void:
+	if tab == 1:
+		rebuild_orders_ui()

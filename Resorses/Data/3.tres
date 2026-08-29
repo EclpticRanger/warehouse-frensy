@@ -11,5 +11,5 @@ texture = ExtResource("2_744jt")
 price = 20
 weight = 60
 sell_price = 40
-spawn_timer = 15.0
+spawn_timer = 10.0
 metadata/_custom_type_script = "uid://coixq670i6g65"

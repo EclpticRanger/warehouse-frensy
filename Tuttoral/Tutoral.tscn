@@ -5,6 +5,7 @@
 [ext_resource type="TileSet" uid="uid://bmeuli562orle" path="res://tileset.tres" id="3_age2k"]
 [ext_resource type="FontFile" uid="uid://chl73gvbmp53o" path="res://Sterion-BLLld.ttf" id="4_dtkj2"]
 [ext_resource type="PackedScene" uid="uid://brplw7hrfpf1j" path="res://Tuttoral/box tutoral.tscn" id="5_age2k"]
+[ext_resource type="PackedScene" path="res://Player/UI/UI.tscn" id="6_dtkj2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vpb77"]
 size = Vector2(80, 31.5)
@@ -118,5 +119,7 @@ id = 1
 stream = SubResource("AudioStreamMP3_age2k")
 volume_db = -5.095
 autoplay = true
+
+[node name="UI" parent="." unique_id=7451055 instance=ExtResource("6_dtkj2")]
 
 [connection signal="area_entered" from="1/Area2D" to="." method="_on_change_tutoral_area_entered"]

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BoxData" format=3 uid="uid://drc8rv0we4oeu"]
+
+[ext_resource type="Script" uid="uid://coixq670i6g65" path="res://Resorses/BoxData.gd" id="1_0k3ll"]
+[ext_resource type="Texture2D" uid="uid://s21x0unit4lm" path="res://Assets/Art/Level Assets/Food/box6.png" id="2_g5llh"]
+
+[resource]
+script = ExtResource("1_0k3ll")
+id = 6
+name = "Starbrorn Cheese"
+texture = ExtResource("2_g5llh")
+price = 100
+weight = 10
+sell_price = 250
+spawn_timer = 40.0
+metadata/_custom_type_script = "uid://coixq670i6g65"

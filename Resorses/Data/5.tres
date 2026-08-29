@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BoxData" format=3 uid="uid://d5xcx5eqtvw0"]
+
+[ext_resource type="Script" uid="uid://coixq670i6g65" path="res://Resorses/BoxData.gd" id="1_6fhqm"]
+[ext_resource type="Texture2D" uid="uid://bofsug4o0onpo" path="res://Assets/Art/Level Assets/Food/box5.png" id="2_bm6ux"]
+
+[resource]
+script = ExtResource("1_6fhqm")
+id = 5
+name = "Varkarin Yokes"
+texture = ExtResource("2_bm6ux")
+price = 50
+weight = 25
+sell_price = 90
+spawn_timer = 20.0
+metadata/_custom_type_script = "uid://coixq670i6g65"

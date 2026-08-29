@@ -57,7 +57,8 @@ func clear_fuffled_order():
 				order.quantitys.erase(id)
 		if order.quantitys == {}:
 			active_orders.erase(order)
-			reputation += 30
+			orders_fulled += 1
+			reputation += 10
 		
 
 func remove_box_from_orders(id: int):
@@ -76,13 +77,12 @@ func start():
 		diffculty_mutiplyer = 1.5
 	elif diferculty == 4:
 		diffculty_mutiplyer = 2.5
-	#new_order()
 
 func new_order():
-	if len(active_orders) >= 5:
+	if len(active_orders) >= 4:
 		return
 	var order: Order = Order.new()
-	var max_mass: int = defult_mass * diffculty_mutiplyer
+	var max_mass: int = defult_mass * diffculty_mutiplyer * (1 + (reputation/25))
 	var mass = 0
 	while true:
 		if mass >= max_mass:
@@ -114,5 +114,5 @@ func find_found_weight(random_number: int, box_weights: Array):
 			return i
 
 func order_timeout(id : int):
-	reputation -= 40
-	active_orders.remove_at(id)
+	reputation -= 10
+	active_orders.remove_at(id-1)

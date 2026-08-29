@@ -5,6 +5,7 @@ var boxes_spawning: Array = []
 func _ready() -> void:
 	Signal_Bus.new_order.connect(start_timer)
 	Globals.new_order()
+	Globals.new_order()
 
 func _on_new_order_timeout() -> void:
 	Globals.new_order()
