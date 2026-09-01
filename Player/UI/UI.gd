@@ -39,6 +39,19 @@ func _ready() -> void:
 		$"in game ui/Money".hide()
 		$"in game ui/Score".hide()
 		$"in game ui/Sprite2D".hide()
+		$"in game ui/Control".hide()
+		$"in game ui/Label".hide()
+		$"Shop menu/Retire".hide()
+		$"Shop menu/Orders".hide()
+	else:
+		$"in game ui/Fuel Tank".show()
+		$"in game ui/Money".show()
+		$"in game ui/Score".show()
+		$"in game ui/Sprite2D".show()
+		$"in game ui/Control".show()
+		$"in game ui/Label".show()
+		$"Shop menu/Retire".show()
+		$"Shop menu/Orders".show()
 
 func _physics_process(_delta: float) -> void:
 	j += 1
@@ -46,7 +59,7 @@ func _physics_process(_delta: float) -> void:
 func _process(_delta: float) -> void:
 	
 	if Input.is_action_just_pressed("menu") or Input.is_action_just_pressed("ui_cancel"):
-		var can_menu: bool = (Globals.tutoral_level in [0])
+		var can_menu: bool = (Globals.tutoral_level == 3) or not Globals.tutoral
 		if can_menu:
 			in_game_ui.visible = not in_game_ui.visible 
 			shop_menu.visible = not shop_menu.visible
