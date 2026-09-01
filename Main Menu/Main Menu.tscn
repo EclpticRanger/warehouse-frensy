@@ -146,15 +146,6 @@ popup/item_2/id = 2
 popup/item_3/text = "Arsonist"
 popup/item_3/id = 3
 
-[node name="Quit" type="Button" parent="PanelContainer/VBoxContainer" unique_id=64541443]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme = ExtResource("4_bgqmh")
-theme_type_variation = &"FlatButton"
-theme_override_font_sizes/font_size = 40
-text = "Quit"
-
 [node name="player animation" type="Node2D" parent="." unique_id=1296090811]
 position = Vector2(325, 4)
 
@@ -201,4 +192,3 @@ texture = ExtResource("9_hx6c7")
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Tutoral" to="." method="_on_tutoral_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
